@@ -1,0 +1,28 @@
+{
+  "development": {
+    "username": "root",
+    "password": "viper12",
+    "database": "sharez_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "viper12",
+    "database": "sharez_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "viper12",
+    "database": "sharez_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "credentials": {
+    "email" : "bookeezapp@gmail.com",
+    "password" : "123qwe123qwe1"
+  }
+}
+
