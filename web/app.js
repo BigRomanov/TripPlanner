@@ -6,8 +6,8 @@ var express = require('express')
   , http    = require('http')
   , fs      = require('fs')
   , User    = require('./models/user')
-  , redisC  = require('redis')
-  , redis   = redisC.createClient()
+  //, redisC  = require('redis')
+  //, redis   = redisC.createClient()
   , config = require('./config/config.json')
   , mongoose = require('mongoose');
 
