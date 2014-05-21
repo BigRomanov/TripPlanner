@@ -83,7 +83,9 @@ app.use(express.methodOverride());
 // the use of bodyParser is not recommended, as it is equivalent to use of json and urlencoded middleware, in addition 
 // to an unsafe multipart - we should review and remove this before release
 // also here: http://andrewkelley.me/post/do-not-use-bodyparser-with-express-js.html
-app.use(express.bodyParser());
+// app.use(express.bodyParser());
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
@@ -122,8 +124,12 @@ app.get('/confirm_register', user.confirmMe);
 app.post('/login', user.login(passport));
 app.post('/register', user.register(confirm));
 
-app.post('/forgot', express.bodyParser(), user.forgot(forgot));
-app.post('/reset', express.bodyParser(), user.reset(forgot));
+//app.post('/forgot', express.bodyParser(), user.forgot(forgot));
+//app.post('/reset', express.bodyParser(), user.reset(forgot));
+
+app.post('/forgot', user.forgot(forgot));
+app.post('/reset',  user.reset(forgot));
+
 
 
 // Served .jade angular partials
@@ -131,8 +137,6 @@ app.get('/partials/:name', function (req, res)
  { var name = req.params.name;
    res.render('partials/' + name);
 });
-
-
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -150,44 +154,6 @@ db.once('open', function callback () {
 function webAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
-}
-
-function apiAuthenticated(req, res, next) {
-  var user_guid    = req.query.user_guid;
-  var access_token = req.query.access_token;
-
-  if (user_guid && access_token) {
-
-    console.log("=========== API AUTH ============");
-    console.log("User id: ",  user_guid);
-    console.log("Access token: ", access_token);
-
-    redis.get('user_guid_' + user_guid, function(err, result) {
-      console.log("Got creds from redis", result);
-      var credentials = JSON.parse(result);
-      if(credentials && credentials.access_token === access_token) {
-        console.log("Token matches!");
-        // TODO: Cache
-        db.User.find(credentials.user_id).success(function(user) {
-          if (user) {
-            console.log("User found");
-            req.user = user;
-            return next();
-          }
-          res.send(401);
-        });
-      }
-      else {
-        res.send(401);
-      } 
-    });
-  }
-  else {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.send(401);
-  }
 }
 
 

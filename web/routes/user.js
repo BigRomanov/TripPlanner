@@ -1,6 +1,4 @@
 var User = require('../models/user')
-   ,redisC = require('redis')
-   ,redis = redisC.createClient()
    ,uuid = require('node-uuid')
    ,store = require("memory-store")
    ,passwordHash = require('password-hash')
@@ -97,36 +95,6 @@ exports.confirmMe = function(req, res) {
   checkExpired(tokenID, callback);
 };
 
-//Helper function for passport authentication configuration
-exports.findByUsername = function(passport, email, password, done) {
-
-  db.User.find({
-    where: {
-      email: email
-    }
-  })
-    .success(function(user) {
-      if (!user) {
-        return done(null, false, {
-          message: 'Unknown user ' + email
-        });
-      }
-      if (!passwordHash.verify(password, user.password)) {
-        return done(null, false, {
-          message: 'Invalid password'
-        })
-      }
-      passport.serializeUser(function(user, done) {
-        done(null, user);
-      });
-      passport.deserializeUser(function(user, done) {
-        done(null, user);
-      });
-      return done(null, user);
-    })
-  //TODO: add err handle function
-}
-
 // login using passport
 exports.login = function(passport) {
   return function(req, res, next) {
@@ -149,7 +117,6 @@ exports.login = function(passport) {
       })(req, res, next);
   }
 };
-
 
 exports.register = function(confirm) {
   return function(req, res) {
@@ -204,98 +171,6 @@ exports.register = function(confirm) {
     }
   }
 }
-
-
-
-function generateCredentials(user_id) {
-    // Generate user id and access_token
-    var user_guid = uuid.v4();
-    var access_token = uuid.v4();
-
-    // Create mapping between the real user id and the generated one
-    redis.set("user_id_" + user_id, user_guid);
-    // Create mapping between generated user id and access token
-    redis.set("user_guid_" + user_guid, JSON.stringify({
-      access_token: access_token,
-      user_id: user_id
-    }));
-
-    console.log("=========== NEW API CREDS ============");
-    console.log("User id: ",  user_guid);
-    console.log("Access token: ", access_token);
-
-    return {
-      user_guid : user_guid,
-      access_token : access_token
-    }
-}
-
-function loadCredentials(user_id) {
-  var creds = null;
-  redis.get(user_id, function(err, user_guid) {
-    if (user_guid) {
-      redis.get(user_guid, function(err, result) {
-        var credentials = JSON.parse(result);
-        if(credentials && credentials.user_id) {
-          creds = {
-                    user_guid : user_guid,
-                    access_token : credentials.access_token
-                  }
-        }
-      });
-    }
-  });
-
-  return creds;
-}
-
-exports.api_tokens = function(req, res, next) {
-  // Check if we have existing credentials
-  var user_id = "user_id_" + req.user.id;
-  var creds = loadCredentials(req.user.id);
-  if (creds == null) {
-    creds = generateCredentials(req.user.id);
-  }
-
-  return res.json(200, {
-    user_guid : creds.user_guid,
-    access_token : creds.access_token,
-    username: req.user.username
-  });
-}
-
-// API
-exports.api_login = function(passport) {
-  return function(req, res, next) {
-    // TODO: Add mechanism for login throttling using redis based attempt count using ideas from
-    // http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication
-    passport.authenticate('local',
-      function(err, user, info) {
-        if (err) {
-          return next(err);
-        }
-        if (!user) {
-          return res.json(401, {
-            message: 'Unauthorized access'
-          });
-        }
-        req.logIn(user, function(err) {
-          if (err) {
-            return next(err);
-          }
-
-          var creds = generateCredentials(user.id);
-
-          return res.json(200, {
-            user_guid : creds.user_guid,
-            access_token : creds.access_token,
-            username: user.username
-          });
-        });
-      })(req, res, next);
-  }
-};
-
 
 exports.forgot = function(forgot) {
   return function(req, res) {
