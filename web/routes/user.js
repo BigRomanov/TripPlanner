@@ -1,4 +1,5 @@
-var User = require('../models/user')
+var User         = require('../models/user')
+    Confirmation = require('../models/confirmation')
    ,uuid = require('node-uuid')
    ,store = require("memory-store")
    ,passwordHash = require('password-hash')
@@ -68,11 +69,7 @@ exports.confirmMe = function(req, res) {
   var checkExpired = function(tokenID, callback) {
     var current_time = new Date();
     var request_time = null;
-    db.Confirmation.find({
-      where: {
-        tokenID: tokenID
-      }
-    })
+    Confirmation.findOne({ tokenID: tokenID })
       .success(function(user) {
         request_time = user.dateAdded;
         current_time = current_time.getTime();
@@ -127,37 +124,35 @@ exports.register = function(confirm) {
     if (validateEmail(email)) {
       if (validatePassword(password)) {
         //check if email already exists. If it does, send message back to user
-        db.User.find({where:{email:email}})
-          .success(function(user) {
-            if (user) {
-              res.render('register', {
-                message:'Hi there! seems like your email already exists. Try Logging in or using some other email address.'
-              })
-            }
-            //if email does not already exist in user DB, create a new user with verified flag set to false
-            else {
-              var hashedPassword = passwordHash.generate(password);
-              db.User.create({
-                username: username,
-                email: email,
-                password: hashedPassword,
-                verified: false
-              })
-                .success(function() {
-                  //call the confirm module to insert the user into Confirm DB and send the mail
-                  var callback = {
-                    error: function(err) {
-                      res.end('Error sending message: ' + err);
-                    },
-                    success: function(success) {
-                      res.end('Check your inbox for a confirm message.');
-                    }
-                  };
-                  confirm(email, callback);
-                })
-            }
+        User.findOne(email:email}, function(err, user) {
+          if (user) {
+            res.render('register', {
+              message:'Hi there! seems like your email already exists. Try Logging in or using some other email address.'
+            })
+          }
+          //if email does not already exist in user DB, create a new user with verified flag set to false
+          else {
+            var hashedPassword = passwordHash.generate(password);
+            var newUser = new User({
+              username: username,
+              email: email,
+              password: hashedPassword,
+              verified: false
+            });
 
-          })
+            newUser.save(function(err, user) {
+              var callback = {
+                error: function(err) {
+                  res.end('Error sending message: ' + err);
+                },
+                success: function(success) {
+                  res.end('Check your inbox for a confirm message.');
+                }
+              };
+              confirm(email, callback);
+            });
+          }
+        });
 
       } else {
         res.render('register', {
@@ -186,21 +181,15 @@ exports.forgot = function(forgot) {
       }
     };
 
-    db.User.find({
-      where: {
-        email: email
+    User.findOne({ email: email }, function(err, user) {
+      if (!user) {
+        res.render('reset', {
+          message: 'Please make sure the email address is correct.'
+        })
+      } else {
+        forgot(email, callback);
       }
     })
-      .success(function(user) {
-        if (!user) {
-          res.render('reset', {
-            message: 'Please make sure the email address is correct.'
-          })
-        } else {
-          forgot(email, callback);
-        }
-
-      })
   }
 };
 
