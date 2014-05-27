@@ -1,7 +1,14 @@
-doctype 5
-html
+doctype html
+html(lang="en")
   head
-    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    title= "Trip Organizer"
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='./javascripts/lib/require.min.js')
+    script(src='./javascripts/startup.js')
+
   body
-    block content
+
+  block content

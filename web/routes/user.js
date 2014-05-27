@@ -124,7 +124,7 @@ exports.register = function(confirm) {
     if (validateEmail(email)) {
       if (validatePassword(password)) {
         //check if email already exists. If it does, send message back to user
-        User.findOne(email:email}, function(err, user) {
+        User.findOne({email:email}, function(err, user) {
           if (user) {
             res.render('register', {
               message:'Hi there! seems like your email already exists. Try Logging in or using some other email address.'

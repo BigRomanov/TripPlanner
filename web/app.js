@@ -111,7 +111,7 @@ app.get('/loggedin', function(req, res) {
   res.send(req.isAuthenticated() ? req.user : '0');
 });
 
-app.get('/', webAuthenticated, routes.home);
+app.get('/', routes.home);
 
 app.get('/login', user.loginPage);
 app.get('/register', user.registerPage);
