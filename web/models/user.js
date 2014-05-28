@@ -1,7 +1,9 @@
 module.exports = function() {
   var userSchema = mongoose.Schema({
       email:    String,
-      password: String
+      password: String,
+      dateAdded: { type: Date, default: Date.now },
+      pages: [{ type: Schema.Types.ObjectId, ref: 'Page' }]
   });
   userSchema.methods.validPassword = function (password) {
     if (password === this.password) {
