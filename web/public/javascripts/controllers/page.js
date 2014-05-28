@@ -1,21 +1,16 @@
 define(
-  'controllers/location', [
+  'controllers/page', [
     'jQuery',
     'tripApp',
-    // 'models/locationModel',
+    'models/pageModel',
   ],
   function($, tripApp) {
     'use strict';
 
-    var PageController = function($scope, $filter, $modal, locationModel) {
-
-      locationModel.load(function(locations) {
-        console.log(locations);
-        $scope.locations = locations;
-      }.bind(this));
+    var PageController = function($scope, $filter, $modal, pageModel) {
 
     };
 
-    tripApp.controller('pageController', ['$scope', '$filter', '$modal', 'locationModel', PageController]);
+    tripApp.controller('pageController', ['$scope', '$filter', '$modal', 'pageModel', PageController]);
 
   });
