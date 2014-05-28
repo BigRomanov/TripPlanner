@@ -111,7 +111,7 @@ app.get('/loggedin', function(req, res) {
   res.send(req.isAuthenticated() ? req.user : '0');
 });
 
-app.get('/', routes.home);
+app.get('/', routes.index);
 
 app.get('/login', user.loginPage);
 app.get('/register', user.registerPage);
@@ -123,6 +123,13 @@ app.get('/confirm_register', user.confirmMe);
 
 app.post('/login', user.login(passport));
 app.post('/register', user.register(confirm));
+
+app.get('/pages', page.list)
+app.get('/page/:id', page.get)
+app.post('/page/new', page.create)
+app.put('/page/:id', page.update)
+app.delete('/page/:id', page.delete)
+
 
 //app.post('/forgot', express.bodyParser(), user.forgot(forgot));
 //app.post('/reset', express.bodyParser(), user.reset(forgot));
