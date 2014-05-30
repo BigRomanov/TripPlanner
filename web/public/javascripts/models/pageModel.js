@@ -1,4 +1,4 @@
-console.log("Processing conversationModel");
+console.log("Processing pageModel");
 
 define(
 'models/pageModel', [
@@ -6,11 +6,11 @@ define(
   'underscore',
   'tripApp',
 ],
-function($, _, sharezApp, $http) {
+function($, _, tripApp, $http) {
   "use strict";
 
 
-  sharezApp.factory('pageModel', function($http) {
+  tripApp.factory('pageModel', function($http) {
     return {
       load: function(callback) {
         $http({

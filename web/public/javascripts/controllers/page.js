@@ -7,10 +7,14 @@ define(
   function($, tripApp) {
     'use strict';
 
-    var PageController = function($scope, $filter, $modal, pageModel) {
-
+    var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
+      if ($routeParams.id == 'new')
+      {
+        // Create new page
+        $http.post('/page/new')
+      }
     };
 
-    tripApp.controller('pageController', ['$scope', '$filter', '$modal', 'pageModel', PageController]);
+    tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);
 
   });

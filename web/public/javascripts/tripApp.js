@@ -6,7 +6,7 @@ define(
   function(angular) {
     'use strict';
 
-    var app = angular.module('sharezApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource']);
+    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', '$provide',
       function($routeProvider, $locationProvider, $httpProvider, $provide) {
@@ -83,7 +83,7 @@ define(
         $httpProvider.interceptors.push('authInterceptor');
 
         // Set up angular routing
-        $routeProvider.when('/pages/:pageId', {
+        $routeProvider.when('/pages/:id', {
           templateUrl: 'angular/page',
           controller: 'pageController'
         });

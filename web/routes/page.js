@@ -1,4 +1,4 @@
-var db      = require('../models');
+var Page      = require('../models/page');
 var _       = require('underscore');
 
 exports.list =  function(req, res) {

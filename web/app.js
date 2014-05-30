@@ -2,10 +2,12 @@ var express = require('express')
   , _       = require('underscore')
   , routes  = require('./routes')
   , user    = require('./routes/user')
+  , page    = require('./routes/page')
   , path    = require('path')
   , http    = require('http')
   , fs      = require('fs')
   , User    = require('./models/user')
+
   //, redisC  = require('redis')
   //, redis   = redisC.createClient()
   , config = require('./config/config.json')
@@ -73,10 +75,13 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
+//app.use(express.favicon(__dirname + '/public/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+
+
 
 // TODO:
 // according to this: http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
@@ -104,8 +109,6 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
-
-
 // route to test if the user is logged in or not
 app.get('/loggedin', function(req, res) {
   res.send(req.isAuthenticated() ? req.user : '0');
@@ -113,36 +116,17 @@ app.get('/loggedin', function(req, res) {
 
 app.get('/', routes.index);
 
-app.get('/login', user.loginPage);
-app.get('/register', user.registerPage);
-app.get('/logout', user.logout);
-app.get('/reset', user.resetPage);
-app.get('/forgot', user.forgotPage);
-app.get('/password_reset', user.resetMe);
-app.get('/confirm_register', user.confirmMe);
-
-app.post('/login', user.login(passport));
-app.post('/register', user.register(confirm));
-
 app.get('/pages', page.list)
 app.get('/page/:id', page.get)
 app.post('/page/new', page.create)
 app.put('/page/:id', page.update)
-app.delete('/page/:id', page.delete)
-
-
-//app.post('/forgot', express.bodyParser(), user.forgot(forgot));
-//app.post('/reset', express.bodyParser(), user.reset(forgot));
-
-app.post('/forgot', user.forgot(forgot));
-app.post('/reset',  user.reset(forgot));
-
+app.delete('/page/:id', page.remove)
 
 
 // Served .jade angular partials
-app.get('/partials/:name', function (req, res)
+app.get('/angular/:name', function (req, res)
  { var name = req.params.name;
-   res.render('partials/' + name);
+   res.render('angular/' + name);
 });
 
 var db = mongoose.connection;

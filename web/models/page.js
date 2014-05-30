@@ -7,7 +7,7 @@ module.exports = function() {
       items:[{
         title: String,
         url: String,
-        images[{url: String}]
+        images: [{url: String}]
       }]
   });
   
