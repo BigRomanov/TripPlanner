@@ -1,7 +1,7 @@
 var db      = require('../models');
 var _       = require('underscore');
 
-exports.list =  function(req, res){
+exports.list =  function(req, res) {
   console.log("location.list", req.body);
   db.Location.findAll({where: {user_id :req.user.id}}).success(function(locations) {
     console.log("got locations", locations);
@@ -9,7 +9,7 @@ exports.list =  function(req, res){
   });
 };
 
-exports.create =  function(req, res){
+exports.create =  function(req, res) {
   console.log("location.create", req.body);
  
   var url = decodeURIComponent(req.body.url);
