@@ -10,12 +10,8 @@ define(
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
       if ($routeParams.id == 'new')
       {
-        // Create new page
-        $http.post('/page/new')
-        .success(function(data) {
-          console.log(data)
-        }).error(function() {
-          // Add error handling
+        pageModel.load(function(page) {
+          $scope.page = page;
         })
       }
     };

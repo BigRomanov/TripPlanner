@@ -14,11 +14,11 @@ function($, _, tripApp, $http) {
     return {
       load: function(callback) {
         $http({
-          url: "http://127.0.0.1:3000/api/conversations",
-          method: "GET"
+          url: "http://localhost:3000/page/new",
+          method: "POST"
         }).success(function(data, status, headers, config) {
             console.log(data);
-            callback(data.conversations);
+            callback(data);
         }).error(function(data, status, headers, config) {
           // TODO: Maybe we can get callback here
           //$scope.status = status;
