@@ -12,6 +12,11 @@ define(
       {
         // Create new page
         $http.post('/page/new')
+        .success(function(data) {
+          console.log(data)
+        }).error(function() {
+          // Add error handling
+        })
       }
     };
 
