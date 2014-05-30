@@ -1,73 +1,86 @@
-var Page      = require('../models/page');
-var _       = require('underscore');
+var mongoose = require('mongoose');
+var Page     = mongoose.model('Page');
+var _        = require('underscore');
+
+var guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return function() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+           s4() + '-' + s4() + s4() + s4();
+  };
+})();
 
 exports.list =  function(req, res) {
-  console.log("location.list", req.body);
-  db.Location.findAll({where: {user_id :req.user.id}}).success(function(locations) {
-    console.log("got locations", locations);
-    res.json(200, {locations:locations});
+  console.log("page.list", req.body);
+  Page.find({user_id :req.user.id}, function(err, pages) {
+    if (err) {
+      res.json(400, err)
+    }
+    else {
+        res.json(200, {pages:pages});
+    } 
   });
 };
 
 exports.create =  function(req, res) {
-  console.log("location.create", req.body);
- 
-  var url = decodeURIComponent(req.body.url);
-  db.Location.findOrCreate({ user_id: req.user.id, url: url}).success(function(location, created) {
-    if (created) {
-      location.added = new Date().getTime();
+  var newId = guid();
+  console.log("Creating new page with id: ", newId);
+
+  var newPage = new Page({_id: newId});
+
+  newPage.save(function(err, page) {
+    if (err) {
+      res.json(400, err)
     }
-      
-    location.title = req.body.title;
-    location.faviconUrl = req.body.faviconUrl;
-    location.marked = req.body.marked;
-
-    location.save().success(function(newNote) {
-      res.send(200);
-    }).error(function(err) {
-      res.json(400, {message:'Error while creating location'});
-    });
-
+    else {
+      res.json(200, page)
+    }
   });
 };
 
 exports.get =  function(req, res){
-  console.log("location.get", req.query, req.params);
+  console.log("page.get", req.query, req.params);
   
-  db.Location.find(req.params.id).success(function(location) {
-    if (location.user_id == req.user.id) {
-      res.json(200, {location:location});
+  Page.findOne({_id:req.params.id}, function(err, page) {
+    if (err) {
+      res.json(400, err)
     }
     else {
-      res.json(400,{message: "Unauthorized"});
+      res.json(200, page)
     }
   });
 };
 
 exports.update =  function(req, res){
-  console.log("location.update", req.query, req.params, req.body);
-  
-  db.Location.find(req.params.id).success(function(location) {
-    if (location.user_id == req.user.id) {
-      location.updateAttributes(req.body, _.keys(req.body)).success(function() {
-        res.json(200, {location:location});  
-      });
+  console.log("page.update", req.query, req.params, req.body);
+
+  Page.findOne({_id:req.params.id}, function(err, page) {
+    if (err) {
+      res.json(400, err)
     }
     else {
-      res.json(400,{message: "Unauthorized"});
+      if (page) {
+        page = req.body
+        page.save(function(err, page) {
+          res.json(200, page)
+
+        })
+      } else {
+        // no page found
+      }
     }
   });
 };
 
 exports.remove =  function(req, res){
-    db.Location.find(req.params.id).success(function(location) {
-    if (location.user_id == req.user.id) {
-      location.destroy().success(function() {
-        res.json(200, {location:location});  
-      });
-    }
+  Page.remove({_id: req.params.id}, function(err, page) {
+    if (err) { res.json(400, err); }
     else {
-      res.json(400,{message: "Unauthorized"});
+      res.json(200, page)
     }
   });
 };

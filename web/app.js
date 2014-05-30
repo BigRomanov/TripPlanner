@@ -1,12 +1,8 @@
 var express = require('express')
   , _       = require('underscore')
-  , routes  = require('./routes')
-  , user    = require('./routes/user')
-  , page    = require('./routes/page')
   , path    = require('path')
   , http    = require('http')
   , fs      = require('fs')
-  , User    = require('./models/user')
 
   //, redisC  = require('redis')
   //, redis   = redisC.createClient()
@@ -14,6 +10,15 @@ var express = require('express')
   , mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/tripplanner');
+
+// Bootstrap models
+var models_path = __dirname + '/models'
+
+console.log("Bootstrapping models from ", models_path)
+
+fs.readdirSync(models_path).forEach(function (file) {
+  if (~file.indexOf('.js')) require(models_path + '/' + file)
+})
 
 var passport      = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
@@ -113,6 +118,13 @@ app.configure('production', function(){
 app.get('/loggedin', function(req, res) {
   res.send(req.isAuthenticated() ? req.user : '0');
 });
+
+// Configure routes // TODO: Move to a separate file?
+
+
+var routes  = require('./routes/index')
+  , user    = require('./routes/user')
+  , page    = require('./routes/page')
 
 app.get('/', routes.index);
 
