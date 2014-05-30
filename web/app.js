@@ -123,7 +123,7 @@ app.get('/loggedin', function(req, res) {
 
 
 var routes  = require('./routes/index')
-  , user    = require('./routes/user')
+  , user    = require('./routes/user') 
   , page    = require('./routes/page')
 
 app.get('/', routes.index);

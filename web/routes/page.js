@@ -16,7 +16,7 @@ var guid = (function() {
 
 exports.list =  function(req, res) {
   console.log("page.list", req.body);
-  Page.find({user_id :req.user.id}, function(err, pages) {
+  Page.find({}, function(err, pages) {
     if (err) {
       res.json(400, err)
     }
@@ -27,10 +27,20 @@ exports.list =  function(req, res) {
 };
 
 exports.create =  function(req, res) {
-  var newId = guid();
-  console.log("Creating new page with id: ", newId);
 
-  var newPage = new Page({_id: newId});
+  var pageId = req.body.pageId;
+
+  console.log(req.body);
+  console.log(req.params);
+
+
+  if (!pageId) {
+    pageId = guid();
+  }
+
+  console.log("Creating new page with id: ", pageId);
+
+  var newPage = new Page({_id: pageId});
 
   newPage.save(function(err, page) {
     if (err) {
@@ -64,7 +74,8 @@ exports.update =  function(req, res){
     }
     else {
       if (page) {
-        page = req.body
+        // TODO: Copy all fields from the request body
+        page.title = req.body.title;
         page.save(function(err, page) {
           res.json(200, page)
 
