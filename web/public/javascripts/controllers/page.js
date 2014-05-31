@@ -8,6 +8,8 @@ define(
     'use strict';
 
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
+      $scope.addingItem = false;
+
       if ($routeParams.id == 'new')
       {
         console.log("Create new page");
@@ -20,6 +22,13 @@ define(
         pageModel.load($routeParams.id, function(page) {
           $scope.page = page;
         })
+      }
+
+      $scope.addItem = function(newItemUrl) {
+        console.log('Adding new Item',$scope.newItemUrl);
+        if (newItemUrl) {
+          $scope.page.items.push({url:newItemUrl});
+        }
       }
     };
 

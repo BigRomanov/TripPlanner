@@ -1,3 +1,13 @@
 h1 Page
 
 {{page._id}}
+br
+
+div(ng-repeat="item in page.items")
+  p {{item.url}}
+  br
+
+#newItem
+  button(ng-click="addingItem=true", ng-hide="addingItem") Add Item
+  input(style="width:180px;height:20px", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter Item URL")
+  button(ng-click="addItem(newItemUrl); addingItem=false", ng-show="addingItem") OK
