@@ -7,7 +7,7 @@ define(
   function($, tripApp) {
     'use strict';
 
-    var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
+    var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel, itemModel) {
       $scope.addingItem = false;
 
       if ($routeParams.id == 'new')
@@ -27,7 +27,12 @@ define(
       $scope.addItem = function(newItemUrl) {
         console.log('Adding new Item',$scope.newItemUrl);
         if (newItemUrl) {
-          $scope.page.items.push({url:newItemUrl});
+          var newItem = new itemModel();
+          newItem.pageId = $scope.page.id;
+          newItem.url = $scope.newItemUrl;
+          newItem.save(function() {
+            $scope.page.items.push(newItem);
+          });
         }
       }
     };

@@ -125,14 +125,21 @@ app.get('/loggedin', function(req, res) {
 var routes  = require('./routes/index')
   , user    = require('./routes/user') 
   , page    = require('./routes/page')
+  , item    = require('./routes/item')
 
 app.get('/', routes.index);
 
-app.get('/pages', page.list)
-app.get('/page/:id', page.get)
-app.post('/page/new', page.create)
-app.put('/page/:id', page.update)
+app.get('/pages',       page.list)
+app.get('/page/:id',    page.get)
+app.post('/page/new',   page.create)
+app.put('/page/:id',    page.update)
 app.delete('/page/:id', page.remove)
+
+app.get('/items',       item.list)
+app.get('/item/:id',    item.get)
+app.post('/items',      item.create)
+app.put('/item/:id',    item.update)
+app.delete('/item/:id', item.remove)
 
 
 // Served .jade angular partials

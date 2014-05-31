@@ -11,10 +11,16 @@ define(
 
     tripApp.factory('itemModel', function($http) {
       return {
-        create: function(callback) {
+        pageId : "",
+        url : "",
+        save: function(callback) {
           $http({
             url: "http://localhost:3000/items",
-            method: "POST"
+            method: "POST",
+            data : {
+              pageId : pageId,
+              url : url
+            }
           }).success(function(data, status, headers, config) {
               console.log(data);
               callback(data);
