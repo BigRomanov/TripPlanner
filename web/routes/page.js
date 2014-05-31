@@ -47,6 +47,7 @@ exports.create =  function(req, res) {
       res.json(400, err)
     }
     else {
+      res.cookie('pageId', page._id);
       res.json(200, page)
     }
   });

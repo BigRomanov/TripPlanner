@@ -10,7 +10,14 @@ define(
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
       if ($routeParams.id == 'new')
       {
-        pageModel.load(function(page) {
+        console.log("Create new page");
+        pageModel.create(function(page) {
+          $scope.page = page;
+        })
+      }
+      else {
+        console.log("Load existing page");
+        pageModel.load($routeParams.id, function(page) {
           $scope.page = page;
         })
       }
