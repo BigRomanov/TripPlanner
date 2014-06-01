@@ -15,7 +15,15 @@ define(
         console.log("Create new page");
         pageModel.create(function(page) {
           $scope.page = page;
+        });
+
+        //============load temp page==========
+        $http.get('javascripts/temp_page/items/page.json').success(function(data) {
+          $scope.page = data;
+          console.log("data is " + data);
         })
+        //====== done loading temp page ======
+
       }
       else {
         console.log("Load existing page");

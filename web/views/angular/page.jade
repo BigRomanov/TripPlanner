@@ -7,6 +7,16 @@ div(ng-repeat="item in page.items")
   p {{item.url}}
   br
 
+ul
+  li(ng-repeat="item in page", style="list-style-type:none")
+    div#item(style="width:400px;height:200px;border:1px solid;float:left; margin:10px")
+      div#itemImage(style="overflow:hidden;width:195px;height:195px;float:left")
+        a.thumb(href='#')
+        img(ng-src='{{item.imageUrl}}')
+      div#itemText(style="overflow:hidden;width:190px;height:200px;float:right; text-align:conter")
+        {{item.name}}
+
+
 #newItem
   button(ng-click="addingItem=true", ng-hide="addingItem") Add Item
   input(style="width:180px;height:20px", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter Item URL")
