@@ -65,7 +65,7 @@ require([
   'bootstrap-tagsinput-angular',
   'ng-tags-input',
   //'filters/filters',
-  //'directives/directives',
+  'directives/directives',
   'models/pageModel',
   'controllers/home',
   'controllers/page',

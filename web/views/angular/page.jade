@@ -9,12 +9,7 @@ div(ng-repeat="item in page.items")
 
 ul
   li(ng-repeat="item in page", style="list-style-type:none")
-    div#item(style="width:400px;height:200px;border:1px solid;float:left; margin:10px")
-      div#itemImage(style="overflow:hidden;width:195px;height:195px;float:left")
-        a.thumb(href='#')
-        img(ng-src='{{item.imageUrl}}')
-      div#itemText(style="overflow:hidden;width:190px;height:200px;float:right; text-align:conter")
-        {{item.name}}
+    trip-item
 
 
 #newItem

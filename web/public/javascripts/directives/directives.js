@@ -1,60 +1,29 @@
 define(
   'directives/directives',
-  ['sharezApp'],
-  function(sharezApp) { 'use strict';
+  ['tripApp'],
+  function(tripApp) { 'use strict';
 
 
-  sharezApp.directive( 'inlineEditor', function($compile, $timeout) {
+  tripApp.directive( 'tripItem', function($compile, $timeout) {
 
-    // TODO: Prefix highlighting is currently hard coded into the editor, we should consider refactoring this
-    var textTemplate  = '<div>' +
-      '<span  ng-bind="value" ng-click="edit()"></span>'+
-      '<input ng-model="value" ng-blur="done()"></input>' +
-      '</div>';
-
-    var urlTemplate   = '<div>' +
-      '<a src="value" ng-bind="value" ng-click="edit()" ></a>'+
-      '<input ng-model="value" ng-blur="done()"></input>' +
+    // TODO: once used isolated scope - item names should be changed
+    var template  =
+      '<div style="width:400px;height:200px;border:1px solid;float:left; margin:10px">' +
+      '<div style="overflow:hidden;width:195px;height:195px;float:left">' +
+      '<img ng-src={{item.imageUrl}}>' +
+      '</div>' +
+      '<div style="overflow:hidden;width:190px;height:200px;float:right; text-align:center">' +
+      '<p> {{item.name}} </p>' +
+      '</div>' +
       '</div>';
 
     return {
       restrict: 'E',
-      scope: {
-        value: '=',
-      },
+//      scope: {
+//        item: '='
+//      },
+      template: template
 
-      link: function ( $scope, element, attrs ) {
-
-        console.log("Editor");
-        element.addClass( 'inlineEditor' );
-
-        $scope.editing = false;
-
-        var getTemplate = function(attrs) {
-          return 'url' in attrs ? urlTemplate : textTemplate;
-        }
-
-        // ng-click handler to activate edit-in-place
-        $scope.edit = function () {
-          console.log("Editing");
-          $scope.editing = true;
-          element.addClass( 'active' );
-          $timeout(function() {
-            $scope.input.focus();
-          },0);
-        };
-
-        $scope.done = function() {
-          $scope.editing = false;
-          element.removeClass( 'active' );
-          //$scope.update();
-        }
-
-        element.append(getTemplate(attrs)).show();
-        $compile(element.contents())($scope);
-
-        $scope.input = $(element).find("input")[0];
-      }
     };
   });
 

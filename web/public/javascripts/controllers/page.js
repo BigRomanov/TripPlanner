@@ -2,7 +2,7 @@ define(
   'controllers/page', [
     'jQuery',
     'tripApp',
-    'models/pageModel',
+    'models/pageModel'
   ],
   function($, tripApp) {
     'use strict';
