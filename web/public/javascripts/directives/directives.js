@@ -6,38 +6,38 @@ define(
 
   tripApp.directive( 'tripItem', function($compile, $timeout) {
 
-    // TODO: once used isolated scope - item names should be changed
     var template  =
-      '<div class="page_item", style="margin:10px; width:360px">' +
+      '<div class="page_item" ng-mouseenter="editing=true" ng-mouseleave="editing=false">' +
         '<article class="page_item_content">' +
-          //'<img class="page_item_image", ng-src={{item.imageUrl}} alt>' +
-          '<img class="page_item_image", ng-src="http://s3-eu-west-1.amazonaws.com/jamieoliverprod/_int/rdb2/upload/1076_1_1396364592_lrg.jpg" alt>' +
+          '<div ng-show="editing" ng-click="deleteItem({itemId:item._id})"> <span>Delete</span></div>' +
+          '<div class="page_item_image" ng-show="item.images.length > 0">' +
+            '<img ng-src={{item.images[0].url}}>' +
           '<div class="page_item_title">' +
             '<p>' +
               '<a href="{{item.url}}" title="{{item.title}}"> {{item.title}} </p>' +
-            '</p>'
+            '</p>' +
           '</div>' +
         '</article>'+
       '</div>'
 
-
-
-
+//      '<div class="page_item" ng-mouseenter="editing=true" ng-mouseleave="editing=false">' +
 //        '<div class="page_item_title">' +
-//
+//          '<a href="{{item.url}}" title="{{item.url}}"> {{item.title}} </a>' +
+//          '<div ng-show="editing" ng-click="deleteItem({itemId:item._id})"> <span>Delete</span></div>' +
 //        '</div>' +
-//        '<div class="page_item_image">' +
-//          '<img ng-src={{item.imageUrl}}>' +
+//        '<div class="page_item_image" ng-show="item.images.length > 0">' +
+//          '<img width=380, height=100, ng-src={{item.images[0].url}}>' +
 //        '</div>' +
 //      '</div>';
+
 
     return {
       restrict: 'E',
       scope: {
-        item: '='
+        item: '=',
+        deleteItem: '&'
       },
       template: template
-
     };
   });
 

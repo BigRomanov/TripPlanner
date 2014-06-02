@@ -35,6 +35,24 @@ define(
           
         }
       }
+
+      $scope.deleteItem = function(itemId) {
+        var item = {
+          pageId: $scope.page._id,
+          itemId: itemId
+        }
+
+        pageModel.deleteItem(item, function(err, item) {
+          // TODO: Check for error
+          for(var i = 0; i < $scope.page.items.length; i++) {
+            console.log($scope.page.items[i]);
+            if (itemId == $scope.page.items[i]._id) {
+              $scope.page.items.splice(i,1);
+              return;
+            }
+          }
+        });
+      }
     };
 
     tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);

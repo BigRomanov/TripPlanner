@@ -23,6 +23,9 @@ exports.create =  function(req, res) {
 
   // Add url processing here...
 
+  // Image url for testing
+  var itemImage = "http://i2.cdn.turner.com/cnn/dam/assets/140520162630-origami-fashion1-entertain-feature.jpg";
+
   // For now we make the title equal to the url
   var itemTitle = itemUrl;
 
@@ -33,11 +36,11 @@ exports.create =  function(req, res) {
         res.json(400, err)
       }
       else {
-          var newItem = {title: itemTitle, url:itemUrl, images:[]};
+          var newItem = {title: itemTitle, url:itemUrl, images:[{url:itemImage}]};
           page.items.push(newItem);
           page.save(function(err, page) {
             if (err) {
-              console.log("Unable to save page");
+              console.log("Unable to save page", err);
               res.json(400, err)
             }
             else {
@@ -95,10 +98,22 @@ exports.update =  function(req, res){
 
 // TODO: Implement for item
 exports.remove =  function(req, res){
-  Page.remove({_id: req.params.id}, function(err, page) {
-    if (err) { res.json(400, err); }
+  console.log("Remove item id = " + req.params.id + " for page = " + req.query.pageId);
+  Page.findOne({_id:req.query.pageId}, function(err, page) {
+    if (err) {
+      res.json(400, err)
+    }
     else {
-      res.json(200, page)
+      delete page.items[req.params.id];
+      page.save(function(err, page) {
+        if (err) {
+          console.log("Unable to save page");
+          res.json(400, err)
+        }
+        else {
+          res.json(200); // consider returning deleted item
+        }
+      });
     }
   });
 };

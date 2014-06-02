@@ -20,6 +20,18 @@ define(
             console.log("adminService::ERROR: Could not load pages", data);
             callback(data);
           });
+        },
+        deleteAllPages: function(callback) {
+          $http({
+            method: "DELETE",
+            url: "http://localhost:3000/admin/pages"
+          }).success(function(data, status, headers, config) {
+            console.log("adminService::SUCCESS: Deleted all pages", data);
+            callback(null, data);
+          }).error(function(data, status, headers, config) {
+            console.log("adminService::ERROR: Could not delete all pages", data);
+            callback(data);
+          });
         }
       }
 
