@@ -5,6 +5,7 @@ require.config({
   paths: {
     underscore: 'lib/underscore.min',
     jQuery: 'lib/jquery-2.0.3.min',
+    'jQueryui': 'lib/jquery-ui-1.10.4.custom.min',
     angular: 'lib/angular',
     angularRoute: 'lib/angular-route',
     angularResource: 'lib/angular-resource',
@@ -21,6 +22,9 @@ require.config({
   shim: {
     'jQuery': {
       exports : 'jQuery'
+    },
+    'jQueryui': {
+      deps: ['jQuery']
     },
     'underscore': {
       exports : '_'
@@ -53,13 +57,14 @@ require.config({
       deps: ['angular']
     },
     'sortable' : {
-      deps: ['jQuery', 'angular']
+      deps: ['jQuery', 'jQueryui', 'angular']
     }
   }
 });
 
 require([
   'jQuery', 
+  
   'angular', 
   'angularRoute', 
   'angularResource', 
