@@ -1,18 +1,21 @@
-h1 Page
 
-{{page._id}}
-br
+div(style="float:left;height:80px")
+  h1 Page
 
-div(ng-repeat="item in page.items")
-  p {{item.url}}
-  br
+#newItem(style="height:80px;width:80px;float:left;margin-top:30px;margin-left:20px")
+  .editing_off(ng-hide="addingItem" style="float:left")
+    button(ng-click="addingItem=true", ) Add Item
+  .editing_on(ng-show="addingItem" style="width:340px;float:left")
+    input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter new item URL")
+    button(ng-click="addItem(newItemUrl); addingItem=false", style="height:24px;float:left") OK
+
+
+.clear
+
+p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
 ul
-  li(ng-repeat="item in page", style="list-style-type:none")
-    trip-item
+  li(ng-repeat="item in page.items", style="list-style-type:none")
+    trip-item(item="item")
 
 
-#newItem
-  button(ng-click="addingItem=true", ng-hide="addingItem") Add Item
-  input(style="width:180px;height:20px", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter Item URL")
-  button(ng-click="addItem(newItemUrl); addingItem=false", ng-show="addingItem") OK

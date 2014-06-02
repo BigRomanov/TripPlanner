@@ -2,5 +2,11 @@ h1 Admin
 
 ul
   li(ng-repeat="page in pages")
-    .adminPageItem
+    .admin_page
       a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
+      ul
+        li(ng-repeat="item in page.items")
+          .admin_item
+            span {{item.title}} (
+            a(href="{{item.url}}" target="_blank") {{item.url}}
+            span )

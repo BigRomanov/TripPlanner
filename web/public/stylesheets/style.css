@@ -6,3 +6,26 @@ body {
 a {
   color: #00B7FF;
 }
+
+.clear {
+  clear:both;
+}
+
+.page_item {
+  width:400px;
+  height:100px;
+  border:1px solid;
+  float:left; 
+  margin:10px;
+  padding:10px;
+}
+
+.page_item_title {
+  width: 198px;
+  height:40px;
+}
+
+.page_item_image {
+  width: 198px;
+  height:350px;
+}

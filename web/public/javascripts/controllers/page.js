@@ -13,14 +13,14 @@ define(
       if ($routeParams.id == 'new')
       {
         console.log("Create new page");
-        pageModel.create(function(err, page) {
+        pageModel.createPage(function(err, page) {
           $scope.page = page;
         });
 
       }
       else {
         console.log("Load existing page");
-        pageModel.load($routeParams.id, function(err, page) {
+        pageModel.loadPage($routeParams.id, function(err, page) {
           $scope.page = page;
         })
       }
@@ -28,7 +28,7 @@ define(
       $scope.addItem = function(newItemUrl) {
         console.log('Adding new item',$scope.newItemUrl);
         if (newItemUrl) {
-          pageModel.create({url:newItemUrl})
+          pageModel.createItem({url:newItemUrl})
           
         }
       }

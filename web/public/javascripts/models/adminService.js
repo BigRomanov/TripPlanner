@@ -14,10 +14,10 @@ define(
             method: "GET",
             url: "http://localhost:3000/admin/pages"
           }).success(function(data, status, headers, config) {
-            console.log("SUCCESS: Loaded pages", data);
+            console.log("adminService::SUCCESS: Loaded pages", data);
             callback(null, data);
           }).error(function(data, status, headers, config) {
-            console.log("ERROR: Could not load pages", data);
+            console.log("adminService::ERROR: Could not load pages", data);
             callback(data);
           });
         }
