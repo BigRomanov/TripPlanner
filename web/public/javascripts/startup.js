@@ -69,6 +69,7 @@ require([
   'models/pageModel',
   'controllers/home',
   'controllers/page',
+  'controllers/admin',
   'controllers/login',], function($, angular) {
     angular.bootstrap(document, ['tripApp']);
   });

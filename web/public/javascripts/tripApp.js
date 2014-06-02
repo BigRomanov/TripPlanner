@@ -98,6 +98,11 @@ define(
           controller: 'loginController'
         });
 
+        $routeProvider.when('/admin', {
+          templateUrl: 'angular/admin',
+          controller: 'adminController'
+        });
+
         $routeProvider.otherwise({
           redirectTo: '/home'
         });

@@ -1,0 +1,6 @@
+h1 Admin
+
+ul
+  li(ng-repeat="page in pages")
+    .adminPageItem
+      a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}

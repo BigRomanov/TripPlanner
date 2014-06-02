@@ -126,6 +126,7 @@ var routes  = require('./routes/index')
   , user    = require('./routes/user') 
   , page    = require('./routes/page')
   , item    = require('./routes/item')
+  , admin    = require('./routes/admin')
 
 app.get('/', routes.index);
 
@@ -141,6 +142,8 @@ app.post('/items',      item.create)
 app.put('/item/:id',    item.update)
 app.delete('/item/:id', item.remove)
 
+// Some simplistic temporary admin routes
+app.get('/admin/pages',       admin.pages)
 
 // Served .jade angular partials
 app.get('/angular/:name', function (req, res)
