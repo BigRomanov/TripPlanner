@@ -25,6 +25,19 @@ define(
           }
         });
       }
+
+      $scope.deleteItem = function(pageId, itemId) {
+         adminService.deleteItem({pageId:pageId, itemId:itemId}, function(err, data) {
+          if (err) {
+            alert("Error: unable to delete item");
+          }
+          else {
+            adminService.allPages(function(err, data) {
+              $scope.pages = data['pages'];
+            })
+          }
+        });
+      }
     }
 
     tripApp.controller('adminController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'adminService', AdminController]);

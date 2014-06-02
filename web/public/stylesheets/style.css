@@ -11,6 +11,32 @@ a {
   clear:both;
 }
 
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin_content ul li {
+  list-style-type: none;
+}
+
+.admin_item
+{
+  height:20px;
+  margin:5px;
+  width:600px;
+}
+
+.admin_item_title {
+  width:500px;
+}
+
+.admin_item_actions {
+  float:right;
+}
+
 .main_content{
   margin: 20px, 30px;
 }

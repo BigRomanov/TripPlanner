@@ -3,11 +3,12 @@ define(
     'jQuery',
     'underscore',
     'tripApp',
+    'models/pageModel'
   ],
-  function($, _, tripApp, $http) {
+  function($, _, tripApp, $http, pageModel) {
     "use strict";
 
-    tripApp.factory('adminService', function($http) {
+    tripApp.factory('adminService', function($http, pageModel) {
       var AdminService = {
         allPages: function(callback) {
           $http({
@@ -32,6 +33,9 @@ define(
             console.log("adminService::ERROR: Could not delete all pages", data);
             callback(data);
           });
+        },
+        deleteItem : function(item, callback) {
+          pageModel.deleteItem(item, callback);
         }
       }
 

@@ -1,19 +1,19 @@
 var mongoose = require('mongoose');
 
-var pageSchema = mongoose.Schema({
+var Items = mongoose.Schema({
+  title: String,
+  url: String,
+  images: [{url: String}],
+  tags:[{name:String, slug: String}]
+});
+
+var Page = mongoose.Schema({
     _id:    String,
     _user: { type: Number, ref: 'User' },
     title : String,
     createdAt: Date,
-    items:[{
-      title: String,
-      url: String,
-      images: [{url: String}]
-    }]
+    items:[Items]
 });
-
-console.log("Register page model");
-
-mongoose.model('Page', pageSchema);
+mongoose.model('Page', Page);
 
 

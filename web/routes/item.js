@@ -96,18 +96,16 @@ exports.update =  function(req, res){
   });
 };
 
-// TODO: Implement for item
 exports.remove =  function(req, res){
   var itemId = req.params.id;
   var pageId = req.query.pageId;
-  console.log("Remove item id = " + itemId + " for page = " + pageId);
   Page.findOne({_id:pageId}, function(err, page) {
     if (err) {
       res.json(400, err)
     }
     else {
       for(var i = 0; i< page.items.length; i++) {
-        if (page.items._id == itemId) {
+        if (page.items[i]._id == itemId) {
           page.items.splice(i,1);
           page.save(function(err, page) {
             if (err) {

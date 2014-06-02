@@ -9,7 +9,12 @@ ul
       a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
       ul
         li(ng-repeat="item in page.items")
-          .admin_item(style="height:20px;margin:5px")
-            span {{item.title}} (
-            a(href="{{item.url}}" target="_blank") {{item.url}}
-            span )
+          .admin_item( ng-mouseenter="showactions=true" ng-mouseleave="showactions=false")
+            .admin_item_actions(ng-show="showactions")
+              a(ng-click="deleteItem(page._id,item._id)" target="_blank") 
+                img(src="/images/admin_item_delete.png")
+            .admin_item_title.truncate
+              a(href="{{item.url}}" target="_blank") {{item.title}}
+            
+          .clear
+            
