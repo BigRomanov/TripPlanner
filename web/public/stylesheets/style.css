@@ -11,21 +11,44 @@ a {
   clear:both;
 }
 
+.main_content{
+  margin: 20px, 30px;
+}
+
 .page_item {
-  width:400px;
-  height:100px;
-  border:1px solid;
+  width:360px;
   float:left; 
   margin:10px;
-  padding:10px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.page_item_content{
+  width:360px;
+  height:420px;
+  margin:0px;
+  float:left;
+  position:relative;
 }
 
 .page_item_title {
-  width: 198px;
-  height:40px;
+  position: absolute;
+  background: #ffffff none;
+  min-height: 100px;
+  top: auto;
+  bottom: 20px;
+  right: 20px;
+  left: 20px;
+  padding: 0px 0px 10px 0px;
+  max-width: 360px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  overflow-wrap: break-word;
+  opacity: 0.9;
 }
 
 .page_item_image {
-  width: 198px;
-  height:350px;
+  width:360px;
+  height:420px;
+  position:absolute;
+  top:0;
 }
