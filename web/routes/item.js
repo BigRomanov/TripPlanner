@@ -98,22 +98,29 @@ exports.update =  function(req, res){
 
 // TODO: Implement for item
 exports.remove =  function(req, res){
-  console.log("Remove item id = " + req.params.id + " for page = " + req.query.pageId);
-  Page.findOne({_id:req.query.pageId}, function(err, page) {
+  var itemId = req.params.id;
+  var pageId = req.query.pageId;
+  console.log("Remove item id = " + itemId + " for page = " + pageId);
+  Page.findOne({_id:pageId}, function(err, page) {
     if (err) {
       res.json(400, err)
     }
     else {
-      delete page.items[req.params.id];
-      page.save(function(err, page) {
-        if (err) {
-          console.log("Unable to save page");
-          res.json(400, err)
+      for(var i = 0; i< page.items.length; i++) {
+        if (page.items._id == itemId) {
+          page.items.splice(i,1);
+          page.save(function(err, page) {
+            if (err) {
+              console.log("Unable to save page");
+              res.json(400, err)
+            }
+            else {
+              res.json(200); // consider returning deleted item
+            }
+          });
         }
-        else {
-          res.json(200); // consider returning deleted item
-        }
-      });
+      } 
+      res.json(400);
     }
   });
 };
