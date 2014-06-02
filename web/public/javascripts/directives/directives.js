@@ -10,8 +10,8 @@ define(
       '<div class="page_item" ng-mouseenter="editing=true" ng-mouseleave="editing=false">' +
         '<article class="page_item_content">' +
           '<div ng-show="editing" ng-click="deleteItem({itemId:item._id})"> <span>Delete</span></div>' +
-          '<div class="page_item_image" ng-show="item.images.length > 0">' +
-            '<img ng-src={{item.images[0].url}}>' +
+          '<div class="page_item_image_wrap" ng-show="item.images.length > 0">' +
+            '<img class="page_item_image" ng-src={{item.images[0].url}}>' +
           '<div class="page_item_title">' +
             '<p>' +
               '<a href="{{item.url}}" title="{{item.title}}"> {{item.title}} </p>' +

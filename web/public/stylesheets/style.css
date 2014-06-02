@@ -46,9 +46,15 @@ a {
   opacity: 0.9;
 }
 
-.page_item_image {
+.page_item_image_wrap {
   width:360px;
   height:420px;
   position:absolute;
   top:0;
+  overflow: hidden;
+}
+
+.page_item_image {
+  display: inline-block;
+  position: relative;
 }
