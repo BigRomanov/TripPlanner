@@ -48,6 +48,19 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
+      deleteItem: function(item, callback) {
+        console.log('Create new item', item);
+        $http({
+          method: "DELETE",
+          url: "http://localhost:3000/item/"+item.itemId+"?pageId="+item.pageId
+        }).success(function(data, status, headers, config) {
+          console.log("SUCCESS: Deleted item", data);
+          callback(null, data);
+        }).error(function(data, status, headers, config) {
+          console.log("ERROR: Could not delete item", data);  
+          callback(data);
+        });
+      },
     }
 
     return PageModel;

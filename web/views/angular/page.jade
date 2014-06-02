@@ -16,6 +16,6 @@ p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
 ul
   li(ng-repeat="item in page.items", style="list-style-type:none")
-    trip-item(item="item")
+    trip-item(item="item" delete-item="deleteItem(itemId)")
 
 
