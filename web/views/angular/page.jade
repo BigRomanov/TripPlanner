@@ -9,13 +9,9 @@ div(style="float:left;height:80px")
     input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter new item URL")
     button(ng-click="addItem(newItemUrl); addingItem=false", style="height:24px;float:left") OK
 
-
 .clear
 
 p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-ul
-  li(ng-repeat="item in page.items", style="list-style-type:none")
-    trip-item(item="item" delete-item="deleteItem(itemId)")
-
-
+div(ui-sortable ng-model="page.items")
+  trip-item(ng-repeat="item in page.items" item="item" delete-item="deleteItem(itemId)")

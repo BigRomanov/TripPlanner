@@ -15,7 +15,8 @@ require.config({
     models: 'models',
     'bootstrap-tagsinput': 'lib/bootstrap-tagsinput.min',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
-    'ng-tags-input' : 'lib/ng-tags-input'
+    'ng-tags-input' : 'lib/ng-tags-input',
+    sortable : 'lib/sortable'
   },
   shim: {
     'jQuery': {
@@ -49,7 +50,10 @@ require.config({
       deps: ['bootstrap-tagsinput', 'angular']
     },
     'ng-tags-input' : {
-      deps: ['angular'],
+      deps: ['angular']
+    },
+    'sortable' : {
+      deps: ['jQuery', 'angular']
     }
   }
 });
@@ -66,6 +70,7 @@ require([
   'ng-tags-input',
   //'filters/filters',
   'directives/directives',
+  'sortable',
   'models/pageModel',
   'controllers/home',
   'controllers/page',
