@@ -25,10 +25,13 @@ define(
         })
       }
 
-      $scope.addItem = function(newItemUrl) {
-        console.log('Adding new item',$scope.newItemUrl);
-        if (newItemUrl) {
-          pageModel.createItem({url:newItemUrl})
+      $scope.addItem = function() {
+        if ($scope.newItemUrl) {
+          var newItem = {pageId:$scope.page._id, url:$scope.newItemUrl};
+          console.log('Adding new item',newItem);
+          pageModel.createItem(newItem, function(err, item) {
+            $scope.page.items.push(item);
+          });
           
         }
       }

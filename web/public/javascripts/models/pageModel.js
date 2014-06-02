@@ -37,8 +37,9 @@ function($, _, tripApp, $http) {
       createItem: function(item, callback) {
         console.log('Create new item', item);
         $http({
+          method: "POST",
           url: "http://localhost:3000/items",
-          method: "POST"
+          data: item
         }).success(function(data, status, headers, config) {
           console.log("SUCCESS: Created item", data);
           callback(null, data);

@@ -20,7 +20,11 @@ exports.create =  function(req, res) {
 
   var pageId  = req.body.pageId;
   var itemUrl = req.body.url;
-  var itemTitle = req.body.title;
+
+  // Add url processing here...
+
+  // For now we make the title equal to the url
+  var itemTitle = itemUrl;
 
   if (pageId && itemUrl) {
     Page.findOne({_id: pageId}, function(err, page) {
