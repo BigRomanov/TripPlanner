@@ -30,10 +30,30 @@ a {
   position:relative;
 }
 
+.page_item_header {
+    width: inherit;
+    min-height: 30px;
+    position: absolute;
+    background: #ffffff none;
+    max-width: 360px;
+}
+
+.page_item_body {
+    width: inherit;
+    height: 300px;
+    top:30px;
+    position: relative;
+}
+
+.page_item_footer {
+    width: inherit;
+    min-height: 100px;
+    background: #ffffff none;
+}
+
 .page_item_title {
   position: absolute;
   background: #ffffff none;
-  min-height: 100px;
   top: auto;
   bottom: 20px;
   right: 20px;
@@ -43,18 +63,18 @@ a {
   font-family: "Courier New", Courier, monospace;
   font-size: 13px;
   overflow-wrap: break-word;
-  opacity: 0.9;
 }
 
 .page_item_image_wrap {
-  width:360px;
-  height:420px;
+  width:inherit;
+  height:inherit;
   position:absolute;
-  top:0;
   overflow: hidden;
 }
 
 .page_item_image {
   display: inline-block;
   position: relative;
+  z-index: -1;
 }
+
