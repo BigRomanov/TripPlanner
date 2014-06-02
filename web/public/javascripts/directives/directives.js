@@ -6,7 +6,6 @@ define(
 
   tripApp.directive( 'tripItem', function($compile, $timeout) {
 
-    // TODO: once used isolated scope - item names should be changed
     var template  =
       '<div class="page_item" ng-mouseenter="editing=true" ng-mouseleave="editing=false">' +
         '<div class="page_item_title">' +
