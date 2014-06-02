@@ -14,7 +14,7 @@ define(
           '<div ng-show="editing" ng-click="deleteItem({itemId:item._id})"> <span>Delete</span></div>' +
         '</div>' +
         '<div class="page_item_image" ng-show="item.images.length > 0">' +
-          '<img width=380, height=100, ng-src={{item.images[0]}}>' +
+          '<img width=380, height=100, ng-src={{item.images[0].url}}>' +
         '</div>' +
       '</div>';
 
@@ -24,14 +24,7 @@ define(
         item: '=',
         deleteItem: '&'
       },
-      template: template,
-      // link: function(scope, elm, attrs) {
-      //   scope.delete = function(item) {
-      //     alert("Delete item " + item._id);
-      //     scope.deleteItem(item._id);
-      //   }
-      // }
-
+      template: template
     };
   });
 

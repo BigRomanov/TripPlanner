@@ -1,12 +1,15 @@
 h1 Admin
 
+button(ng-click="deleteAllPages()") Delete all pages
+
+div#adminContent(style="padding:10px")
 ul
   li(ng-repeat="page in pages")
-    .admin_page
+    .admin_page(style="height:20px")
       a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
       ul
         li(ng-repeat="item in page.items")
-          .admin_item
+          .admin_item(style="height:20px;margin:5px")
             span {{item.title}} (
             a(href="{{item.url}}" target="_blank") {{item.url}}
             span )

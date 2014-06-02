@@ -23,6 +23,7 @@ exports.create =  function(req, res) {
 
   // Add url processing here...
 
+  // Image url for testing
   var itemImage = "http://i2.cdn.turner.com/cnn/dam/assets/140520162630-origami-fashion1-entertain-feature.jpg";
 
   // For now we make the title equal to the url
@@ -35,11 +36,11 @@ exports.create =  function(req, res) {
         res.json(400, err)
       }
       else {
-          var newItem = {title: itemTitle, url:itemUrl, images:[itemImage]};
+          var newItem = {title: itemTitle, url:itemUrl, images:[{url:itemImage}]};
           page.items.push(newItem);
           page.save(function(err, page) {
             if (err) {
-              console.log("Unable to save page");
+              console.log("Unable to save page", err);
               res.json(400, err)
             }
             else {
@@ -114,4 +115,5 @@ exports.remove =  function(req, res){
         }
       });
     }
+  });
 };

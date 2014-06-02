@@ -13,3 +13,12 @@ exports.pages =  function(req, res) {
     } 
   });
 };
+
+exports.deleteAllPages =  function(req, res) {
+  Page.find({}).remove({}, function(err, data) {
+    if (err) { res.json(400, err) }
+    else {
+      res.json(200);
+    } 
+  });
+};

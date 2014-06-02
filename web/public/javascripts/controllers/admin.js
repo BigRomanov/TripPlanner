@@ -13,7 +13,19 @@ define(
       adminService.allPages(function(err, data) {
         $scope.pages = data['pages'];
       })
-    };
+
+      $scope.deleteAllPages = function() {
+        adminService.deleteAllPages(function(err, data) {
+          if (err) {
+            alert("Error: unable to delete all pages");
+          }
+          else {
+            alert("All pages deleted");
+            $scope.pages = [];
+          }
+        });
+      }
+    }
 
     tripApp.controller('adminController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'adminService', AdminController]);
 
