@@ -21,7 +21,7 @@ div(ui-sortable ng-model="page.items")
         a(ng-href="www.google.com") X
       .page_item_body_h_1
         .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
-          img.page_item_image_h_1(ng-src="http://cdn.isurfbecause.com/images/background.jpg")
+          img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
       .page_item_footer_h_1
         .page_item_title_h_1
           {{item.url}}
