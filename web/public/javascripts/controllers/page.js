@@ -2,9 +2,10 @@ define(
   'controllers/page', [
     'jQuery',
     'tripApp',
+    'async',
     'models/pageModel'
   ],
-  function($, tripApp) {
+  function($, tripApp, async) {
     'use strict';
 
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
@@ -21,8 +22,43 @@ define(
       else {
         console.log("Load existing page");
         pageModel.loadPage($routeParams.id, function(err, page) {
-          $scope.page = page;
+
+          async.each(page.items, 
+            function(item, callback) {
+              getOrientation(item, callback);
+            }, 
+            function(err){
+            // if any of the saves produced an error, err would equal that error
+            if (err) {
+              console.log("Some error occured when calculating orientation", err);
+            }
+            
+            $scope.page = page;
+            $scope.$apply();
+          });
+          
         })
+      }
+
+      function getOrientation(item, callback) {
+        var img = new Image();
+
+        img.onload = function(){
+          var height = img.height;
+          var width = img.width;
+
+          item.orientation = (height > width) ? 1 : 0;
+
+          console.log("Got info for item" + item._id, item.orientation);
+          console.log(img.src);
+          console.log(height);
+          console.log(width);
+
+          callback(null);
+        }
+
+        img.src = item.images[0].url;
+
       }
 
       $scope.addItem = function() {

@@ -24,8 +24,28 @@ exports.create =  function(req, res) {
   // Add url processing here...
 
   // Image url for testing
-  var itemImage = "http://i2.cdn.turner.com/cnn/dam/assets/140520162630-origami-fashion1-entertain-feature.jpg";
+  //var itemImage = "http://i2.cdn.turner.com/cnn/dam/assets/140520162630-origami-fashion1-entertain-feature.jpg";
 
+  var itemImage = "http://rollingout.com/wp-content/uploads/2013/10/kim-kardashian-tao-silver-dress-1565676875.jpg";
+
+  // Server side calculation of image size
+  // var url = require('url');
+  // var http = require('http');
+
+  // var sizeOf = require('image-size');
+  // var options = url.parse(itemImage);
+
+  // http.get(options, function (response) {
+  //   var chunks = [];
+  //   response.on('data', function (chunk) {
+  //     chunks.push(chunk);
+  //   }).on('end', function() {
+  //     var buffer = Buffer.concat(chunks);
+  //     console.log(sizeOf(buffer));
+  //   });
+  // });
+
+  
   // For now we make the title equal to the url
   var itemTitle = itemUrl;
 

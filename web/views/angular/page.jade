@@ -18,9 +18,16 @@ p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
 div(ui-sortable ng-model="page.items")
     div.page_item(ng-repeat="item in page.items")
-      .page_item_header
-        {{item.url}}
-      .page_item_body
-        {{item.
-      .page_item_footer
-        p bye
+      p item...
+      .vertical_item(ng-show="item.orientation == 1")
+        .page_item_header
+          {{item.url}}
+        .page_item_body
+        .page_item_footer
+          p Vertical
+      .horizontal_item(ng-show="item.orientation == 0")
+        .page_item_header
+          {{item.url}}
+        .page_item_body
+        .page_item_footer
+          p Horizontal

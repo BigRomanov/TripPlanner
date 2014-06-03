@@ -4,6 +4,7 @@ require.config({
   baseUrl: '/javascripts',
   paths: {
     underscore: 'lib/underscore.min',
+    async : 'lib/async',
     jQuery: 'lib/jquery-2.0.3.min',
     'jQueryui': 'lib/jquery-ui-1.10.4.custom.min',
     angular: 'lib/angular',
@@ -28,6 +29,9 @@ require.config({
     },
     'underscore': {
       exports : '_'
+    },
+    'async': {
+      exports : 'async'
     },
     'angular': {
       deps: ['jQuery'],
@@ -64,7 +68,6 @@ require.config({
 
 require([
   'jQuery', 
-  
   'angular', 
   'angularRoute', 
   'angularResource', 
