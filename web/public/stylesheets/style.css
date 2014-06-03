@@ -22,6 +22,7 @@ ul {
   text-overflow: ellipsis;
 }
 
+
 .admin_content ul li {
   list-style-type: none;
 }
@@ -32,6 +33,15 @@ ul {
   margin:5px;
   width:600px;
 }
+
+.admin_page.selected {
+  border:1px solid #ccc;
+}
+
+.admin_item.selected {
+  border:1px solid #ccc;
+}
+
 
 .admin_item_title {
   width:500px;

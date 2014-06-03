@@ -9,7 +9,7 @@ ul
       a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
       ul
         li(ng-repeat="item in page.items")
-          .admin_item( ng-mouseenter="showactions=true" ng-mouseleave="showactions=false")
+          .admin_item( ng-mouseenter="showactions=true" ng-mouseleave="showactions=false" ng-class="{selected: showactions==true}")
             .admin_item_actions(ng-show="showactions")
               a(ng-click="deleteItem(page._id,item._id)" target="_blank") 
                 img(src="/images/admin_item_delete.png")
