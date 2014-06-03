@@ -17,17 +17,10 @@ p(ng-show="page.items.length == 0") There are no items on this page, add some!
 //  trip-item(ng-repeat="item in page.items" item="item" delete-item="deleteItem(itemId)")
 
 div(ui-sortable ng-model="page.items")
-    div(ng-repeat="item in page.items" item="item", style="height:200px; width:200px; border:1px solid")
-      .page_item(ng-mouseenter='editing=true', ng-mouseleave='editing=false')
-        article.page_item_content
-          .page_item_header
-            div(ng-show='editing', ng-click='deleteItem({itemId:item._id})')
-            span Delete
-          .page_item_body
-            .page_item_image_wrap(ng-show='ng-show', item.images.length='item.images.length')
-              | 0"
-              img.page_item_image(ng-src='{{item.images[0].url}}')
-          .page_item_footer
-            .page_item_title
-              p
-                a(href='{{item.url}}', title='{{item.title}}')  {{item.title}}
+    div.page_item(ng-repeat="item in page.items")
+      .page_item_header
+        {{item.url}}
+      .page_item_body
+        {{item.
+      .page_item_footer
+        p bye
