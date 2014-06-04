@@ -23,16 +23,12 @@
 
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-
-  div(ui-sortable ng-model="page.items")
-    div.page_item_h_1(ng-repeat="item in page.items")
-      .page_item_content_h_1
-        .page_item_header_h_1
-          a(ng-href="www.google.com") X
-        .page_item_body_h_1
-          .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
-            img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
-        .page_item_footer_h_1
-          .page_item_title_h_1
-            {{item.url}}
-
+  .gridElements(ui-sortable ng-model="page.items")
+    .itemWrapper(ng-repeat="item in page.items")
+      .itemWrapper.itemBase
+        .item_h_1
+          .itemImageWrapper(ng-show="item.images.length > 0")
+            img(ng-src="{{item.images[0].url}}")
+          .itemMetaWrapper
+            .itemMeta
+              {{item.url}}
