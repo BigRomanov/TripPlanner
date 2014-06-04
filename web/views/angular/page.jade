@@ -26,9 +26,10 @@
   .gridElements(ui-sortable ng-model="page.items")
     .itemWrapper(ng-repeat="item in page.items")
       .itemWrapper.itemBase
-        .item_h_1
+        .div(ng-class="({{item.orientation}}==1) ? 'item_v_1' : 'item_h_1'"
           .itemImageWrapper(ng-show="item.images.length > 0")
             img(ng-src="{{item.images[0].url}}")
           .itemMetaWrapper
             .itemMeta
               {{item.url}}
+              {{item.orientation}} is the orientation
