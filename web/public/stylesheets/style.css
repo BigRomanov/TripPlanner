@@ -113,65 +113,79 @@ ul {
   margin: 20px, 30px;
 }
 
-.page_item_h_1 {
-  width:360px;
-  float:left; 
-  margin:10px;
-  box-shadow: 10px 10px 5px #888888;
+.gridElements {
+
 }
 
-.page_item_content_h_1{
-  width:360px;
-  height:220px;
-  margin:0px;
-  float:left;
-  position:relative;
+.itemBase {
+    position:relative;
 }
 
-.page_item_header_h_1 {
+.itemWrapper {
+    position: relative;
+    width: 380px;
+    height: 200px;
+    font-size: 11px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+    background: #fff;
+    float: left;
+    margin: 10px;
+}
+
+.item_v_1 {
     width: inherit;
-    min-height: 20px;
+    height: inherit;
+}
+
+.item_h_1 {
+    width: inherit;
+    height: inherit;
+}
+
+
+.item_v_1 .itemImageWrapper {
+    width: 200px;
+    height: inherit;
+    float: left;
     position: absolute;
-    background: #ffffff none;
-    max-width: 360px;
+    overflow: hidden;
+    border: 1px solid;
 }
 
-.page_item_body_h_1 {
+.item_v_1 .itemMetaWrapper {
+    width: 180px;
+    height: inherit;
+    float: right;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.item_h_1 .itemImageWrapper {
+    height:140px;
     width: inherit;
-    height: 140px;
-    top:30px;
+    float: left;
+    position:absolute;
+    overflow: hidden;
+}
+
+.item_h_1 .itemMetaWrapper {
+    height: 60px;
+    width:inherit;
+    top: 140px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     position: relative;
 }
 
-.page_item_footer_h_1 {
-    width: inherit;
-    min-height: 60px;
-    background: #ffffff none;
+.itemMeta {
+    position: absolute;
+    padding: 10px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    overflow-wrap: break-word;
 }
 
-.page_item_title_h_1 {
-  position: absolute;
-  background: #ffffff none;
-  top: auto;
-  bottom: 10px;
-  right: 20px;
-  left: 20px;
-  padding: 0px 0px 10px 0px;
-  max-width: 320px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  overflow-wrap: break-word;
-}
-
-.page_item_image_wrap_h_1 {
-  width:inherit;
-  max-height:140px;
-  position:absolute;
-  overflow: hidden;
-}
-
-.page_item_image_h_1 {
-  display: inline-block;
-  position: relative;
-  z-index: -1;
-}

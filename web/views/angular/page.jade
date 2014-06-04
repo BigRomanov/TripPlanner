@@ -16,22 +16,19 @@
 
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-
-  div(ui-sortable ng-model="page.items")
+   .gridElements(ui-sortable ng-model="page.items")
     div(ng-repeat="item in page.items")
-      .page_item_h_1(ng-if="item.regular")
-        .page_item_content_h_1
-          .page_item_header_h_1
-            a(ng-href="www.google.com") X
-          .page_item_body_h_1
-            .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
-              img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
-          .page_item_footer_h_1
-            .page_item_title_h_1
-              {{item.url}}
+      .itemWrapper(ng-if="item.regular")
+        .itemWrapper.itemBase
+          .div(ng-class="{1:'item_v_1', 2:'item_h_1'}[item.orientation]")
+            .itemImageWrapper(ng-show="item.images.length > 0")
+              img(style="height:200px" ng-src="{{item.images[0].url}}")
+            .itemMetaWrapper
+              .itemMeta
+                {{item.url}}
+                {{item.orientation}} is the orientation
       #new_item(ng-if="item.new_item" class="new_item")
         a(ng-click="closeNewItem()" style="float:right") Close
         .editing_on(style="width:340px;float:left")
           input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", placeholder="Enter new item URL")
           button(ng-click="addItem(newItemUrl);", style="height:24px;float:left") OK
-
