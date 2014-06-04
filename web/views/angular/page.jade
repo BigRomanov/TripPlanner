@@ -17,7 +17,7 @@
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
    .gridElements(ui-sortable ng-model="page.items")
-    div(ng-repeat="item in page.items")
+    div(ng-repeat="item in page.items" class="animate-items")
       .itemWrapper(ng-if="item.regular")
         .itemWrapper.itemBase
           .div(ng-class="{1:'item_v_1', 2:'item_h_1'}[item.orientation]")
@@ -27,7 +27,7 @@
               .itemMeta
                 {{item.url}}
                 {{item.orientation}} is the orientation
-      #new_item(ng-if="item.new_item" class="new_item")
+      #newItem(ng-if="item.new_item" )
         a(ng-click="closeNewItem()" style="float:right") Close
         .editing_on(style="width:340px;float:left")
           input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", placeholder="Enter new item URL")

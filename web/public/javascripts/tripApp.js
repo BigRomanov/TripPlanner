@@ -1,6 +1,7 @@
 define(
   [
     'angular',
+    'angularAnimate',
     'ui-bootstrap'
   ],
   function(angular) {
