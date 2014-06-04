@@ -27,6 +27,7 @@ define(
           async.each(page.items, 
             function(item, callback) {
               item.pageId = page._id;
+              item.regular = true;
               getOrientation(item, callback);
             }, 
             function(err){
@@ -36,7 +37,6 @@ define(
             }
             
             $scope.page = page;
-            //$scope.$apply();
           });
           
         })
@@ -46,11 +46,9 @@ define(
         
         console.log(item);
         if ('orientation' in item || item.images.length == 0) {
-          console.log("No need to get orientation");
           callback(null);
         }
         else {
-          console.log("Need to get orientation");
           var img = new Image();
 
           img.onload = function(){
@@ -67,10 +65,22 @@ define(
         }
       }
 
-      $scope.test = function() {
-        var scrollPos = $("#contentPane").scrollTop;
+      $scope.newItem = function() {
+        var scrollPos = $(document).scrollTop();
 
-        console.log(scrollPos);
+        var itemsInLine = Math.floor($("#contentPane").width() / 400);
+        var line = Math.floor((scrollPos - 200) / 200);
+
+        var index = (line+1) * itemsInLine;
+
+        $scope.new_item_index = index;
+        $scope.page.items.splice(index, 0, {new_item:true});
+
+        console.log(itemsInLine, line, index);
+      }
+
+      $scope.closeNewItem = function() {
+        $scope.page.items.splice($scope.new_item_index, 1);        
       }
 
       $scope.addItem = function() {

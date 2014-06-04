@@ -1,23 +1,16 @@
 
 #actionPane
   .action_item
-    a(ng-click="test()")
-      img(src="images/add_button.png")
+    a(ng-click="newItem()")
+      img(width=40 height=40 src="images/add_button.png")
   .action_item
     a(ng-click="savePage()")
-      img(src="images/save_page.png")
+      img(width=40 height=40 src="images/save_page.png")
 
 #contentPane
 
   div(style="float:left;height:80px")
     h1 Page title
-
-  #newItem(style="height:80px;width:80px;float:left;margin-top:30px;margin-left:20px")
-    .editing_off(ng-hide="addingItem" style="float:left")
-      button(ng-click="addingItem=true", ) Add Item
-    .editing_on(ng-show="addingItem" style="width:340px;float:left")
-      input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter new item URL")
-      button(ng-click="addItem(newItemUrl); addingItem=false", style="height:24px;float:left") OK
 
   .clear
 
@@ -25,14 +18,20 @@
 
 
   div(ui-sortable ng-model="page.items")
-    div.page_item_h_1(ng-repeat="item in page.items")
-      .page_item_content_h_1
-        .page_item_header_h_1
-          a(ng-href="www.google.com") X
-        .page_item_body_h_1
-          .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
-            img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
-        .page_item_footer_h_1
-          .page_item_title_h_1
-            {{item.url}}
+    div(ng-repeat="item in page.items")
+      .page_item_h_1(ng-if="item.regular")
+        .page_item_content_h_1
+          .page_item_header_h_1
+            a(ng-href="www.google.com") X
+          .page_item_body_h_1
+            .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
+              img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
+          .page_item_footer_h_1
+            .page_item_title_h_1
+              {{item.url}}
+      #new_item(ng-if="item.new_item" class="new_item")
+        a(ng-click="closeNewItem()" style="float:right") Close
+        .editing_on(style="width:340px;float:left")
+          input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", placeholder="Enter new item URL")
+          button(ng-click="addItem(newItemUrl);", style="height:24px;float:left") OK
 
