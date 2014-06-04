@@ -23,8 +23,10 @@ define(
         console.log("Load existing page");
         pageModel.loadPage($routeParams.id, function(err, page) {
 
+          // Perfrom some preprocessing on the loaded list
           async.each(page.items, 
             function(item, callback) {
+              item.pageId = page._id;
               getOrientation(item, callback);
             }, 
             function(err){
@@ -34,31 +36,41 @@ define(
             }
             
             $scope.page = page;
-            $scope.$apply();
+            //$scope.$apply();
           });
           
         })
       }
 
       function getOrientation(item, callback) {
-        var img = new Image();
-
-        img.onload = function(){
-          var height = img.height;
-          var width = img.width;
-
-          item.orientation = (height > width) ? 1 : 0;
-
-          console.log("Got info for item" + item._id, item.orientation);
-          console.log(img.src);
-          console.log(height);
-          console.log(width);
-
+        
+        console.log(item);
+        if ('orientation' in item || item.images.length == 0) {
+          console.log("No need to get orientation");
           callback(null);
         }
+        else {
+          console.log("Need to get orientation");
+          var img = new Image();
 
-        img.src = item.images[0].url;
+          img.onload = function(){
+            item.orientation = (img.height > img.width) ? 1 : 0;
 
+            // TODO: Think about sending partial data instead of entire item
+            pageModel.updateItem(item, function(err, data) {
+              callback(err);
+            });
+
+          }
+
+          img.src = item.images[0].url;  
+        }
+      }
+
+      $scope.test = function() {
+        var scrollPos = $("#contentPane").scrollTop;
+
+        console.log(scrollPos);
       }
 
       $scope.addItem = function() {
@@ -66,9 +78,11 @@ define(
           var newItem = {pageId:$scope.page._id, url:$scope.newItemUrl};
           console.log('Adding new item',newItem);
           pageModel.createItem(newItem, function(err, item) {
-            $scope.page.items.push(item);
+            console.log("Adding new item2", item);
+            getOrientation(item, function(err) {
+              $scope.page.items.push(item);
+            });
           });
-          
         }
       }
 

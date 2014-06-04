@@ -38,12 +38,13 @@ ul {
   margin:auto;
 }
 
-.contentPane {
+#contentPane {
   margin-left:100px;
 }
 
 .admin_content ul li {
   list-style-type: none;
+  display:block;
 }
 
 .admin_item
