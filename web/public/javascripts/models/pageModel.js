@@ -61,6 +61,20 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
+      updateItem: function(item, callback) {
+        console.log('Update item', item);
+        $http({
+          method: "PUT",
+          url: "http://localhost:3000/item/"+item._id,
+          data: item
+        }).success(function(data, status, headers, config) {
+          console.log("SUCCESS: Updated item", data);
+          callback(null, data);
+        }).error(function(data, status, headers, config) {
+          console.log("ERROR: Could not update item", data);  
+          callback(data);
+        });
+      },
     }
 
     return PageModel;

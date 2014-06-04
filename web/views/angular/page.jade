@@ -1,28 +1,35 @@
 
-div(style="float:left;height:80px")
-  h1 Page
+#actionPane
+  .action_item
+    a(ng-click="test()")
+      img(src="images/add_button.png")
 
-#newItem(style="height:80px;width:80px;float:left;margin-top:30px;margin-left:20px")
-  .editing_off(ng-hide="addingItem" style="float:left")
-    button(ng-click="addingItem=true", ) Add Item
-  .editing_on(ng-show="addingItem" style="width:340px;float:left")
-    input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter new item URL")
-    button(ng-click="addItem(newItemUrl); addingItem=false", style="height:24px;float:left") OK
+#contentPane
 
-.clear
+  div(style="float:left;height:80px")
+    h1 Page title
 
-p(ng-show="page.items.length == 0") There are no items on this page, add some!
+  #newItem(style="height:80px;width:80px;float:left;margin-top:30px;margin-left:20px")
+    .editing_off(ng-hide="addingItem" style="float:left")
+      button(ng-click="addingItem=true", ) Add Item
+    .editing_on(ng-show="addingItem" style="width:340px;float:left")
+      input(style="width:280px;height:22px;float:left", ng-model="newItemUrl", ng-show="addingItem", placeholder="Enter new item URL")
+      button(ng-click="addItem(newItemUrl); addingItem=false", style="height:24px;float:left") OK
+
+  .clear
+
+  p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
 
-div(ui-sortable ng-model="page.items")
-  div.page_item_h_1(ng-repeat="item in page.items")
-    .page_item_content_h_1
-      .page_item_header_h_1
-        a(ng-href="www.google.com") X
-      .page_item_body_h_1
-        .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
-          img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
-      .page_item_footer_h_1
-        .page_item_title_h_1
-          {{item.url}}
+  div(ui-sortable ng-model="page.items")
+    div.page_item_h_1(ng-repeat="item in page.items")
+      .page_item_content_h_1
+        .page_item_header_h_1
+          a(ng-href="www.google.com") X
+        .page_item_body_h_1
+          .page_item_image_wrap_h_1(ng-show="item.images.length > 0")
+            img.page_item_image_h_1(ng-src="{{item.images[0].url}}")
+        .page_item_footer_h_1
+          .page_item_title_h_1
+            {{item.url}}
 

@@ -47,14 +47,14 @@ define(
           return {
             // optional method
             'request': function(config) {
-              console.log('authInterceptor::request', config);
+              //console.log('authInterceptor::request', config);
               return config || $q.when(config);
             },
        
             // optional method
            'requestError': function(rejection) {
               // do something on error
-              console.log('authInterceptor::requestError');
+              //console.log('authInterceptor::requestError');
               if (canRecover(rejection)) {
                 return responseOrNewPromise
               }
@@ -64,14 +64,14 @@ define(
             // optional method
             'response': function(response) {
               // do something on success
-              console.log('authInterceptor::response', response);
+              //console.log('authInterceptor::response', response);
               return response || $q.when(response);
             },
        
             // optional method
            'responseError': function(response) {
               // do something on error
-              console.log('authInterceptor::responseError');
+              //console.log('authInterceptor::responseError');
               if (response.status === 401)
                 //$location.url('/login');
                 window.location.replace('/login');

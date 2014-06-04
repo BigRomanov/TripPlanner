@@ -64,6 +64,7 @@ exports.create =  function(req, res) {
               res.json(400, err)
             }
             else {
+              newItem._id = page.items[page.items.length - 1 ]._id;
               newItem.pageId = pageId;
               res.json(200, newItem)
             }
@@ -93,22 +94,23 @@ exports.get =  function(req, res){
   });
 };
 
-// TODO: Implement for item
-exports.update =  function(req, res){
-  console.log("page.update", req.query, req.params, req.body);
 
-  Page.findOne({_id:req.params.id}, function(err, page) {
+exports.update =  function(req, res){
+  //console.log("page.update", req.query, req.params, req.body);
+
+  Page.findOne({_id:req.body.pageId}, function(err, page) {
     if (err) {
       res.json(400, err)
     }
     else {
       if (page) {
-        // TODO: Copy all fields from the request body
-        page.title = req.body.title;
+
+        page.updateItem(req.body);
+    
         page.save(function(err, page) {
           res.json(200, page)
-
-        })
+        });
+        
       } else {
         // no page found
       }
