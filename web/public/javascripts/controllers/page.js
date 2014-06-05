@@ -67,10 +67,14 @@ define(
       }
 
       $scope.openNewItem = function() {
+        if ($scope.addingNewItem)
+          return;
+
+        $scope.addingNewItem = true;
         var scrollPos = $(document).scrollTop();
 
         var itemsInLine = Math.floor($("#contentPane").width() / 400);
-        var line = Math.floor((scrollPos - 200) / 200);
+        var line = Math.floor((scrollPos) / 200);
 
         var index = (line+1) * itemsInLine;
 
@@ -81,7 +85,8 @@ define(
       }
 
       $scope.closeNewItem = function() {
-        $scope.page.items.splice($scope.new_item_index, 1);        
+        $scope.page.items.splice($scope.new_item_index, 1);  
+        $scope.addingNewItem = false;      
       }
 
       $scope.addItem = function() {
