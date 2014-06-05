@@ -34,6 +34,18 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
+      savePage: function(id, callback) {
+        $http({
+          method: "POST",
+          url: "http://localhost:3000/page/"+ id+"/save"
+        }).success(function(data, status, headers, config) {
+          console.log("SUCCESS: Saved page", data);
+          callback(null, data);
+        }).error(function(data, status, headers, config) {
+          console.log("ERROR: Could not save page", data);  
+          callback(data);
+        });
+      },
       createItem: function(item, callback) {
         console.log('Create new item', item);
         $http({

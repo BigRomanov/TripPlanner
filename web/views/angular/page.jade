@@ -14,9 +14,12 @@
 
   .clear
 
+  notification(message="message")
+
+
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-   .gridElements(ui-sortable ng-model="page.items")
+  .gridElements(ui-sortable ng-model="page.items")
     div(ng-repeat="item in page.items" class="animate-items")
       .itemWrapper(ng-if="item.regular")
         .itemWrapper.itemBase

@@ -96,3 +96,13 @@ exports.remove =  function(req, res){
     }
   });
 };
+
+exports.save =  function(req, res){
+  // Page.({_id: req.params.id}, function(err, page) {
+  //   if (err) { res.json(400, err); }
+  //   else {
+  //     res.json(200, page)
+  //   }
+  // });
+  res.json(200);
+};

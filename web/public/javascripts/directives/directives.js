@@ -41,4 +41,20 @@ define(
     };
   });
 
+  tripApp.directive('notification', function($timeout){
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        message: '='
+      },
+      template: '<div  class="notification" ng-show="message">{{message}}</div>',
+      link: function(scope, element, attrs) {
+        $timeout(function(){
+          scope.message = "";
+        }, 5000);
+      }
+    }
+  });
+
 });

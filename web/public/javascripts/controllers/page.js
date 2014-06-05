@@ -11,7 +11,7 @@ define(
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
 
       $scope.newItem = {url:""};
-
+      
       if ($routeParams.id == 'new')
       {
         console.log("Create new page");
@@ -122,6 +122,12 @@ define(
               return;
             }
           }
+        });
+      }
+
+      $scope.savePage = function() {
+        pageModel.savePage($scope.page._id, function(err, page) {
+          $scope.message = "Page saved!";
         });
       }
     };

@@ -133,6 +133,7 @@ app.get('/', routes.index);
 app.get('/pages',       page.list)
 app.get('/page/:id',    page.get)
 app.post('/page/new',   page.create)
+app.post('/page/:id/save',   page.save)
 app.put('/page/:id',    page.update)
 app.delete('/page/:id', page.remove)
 
