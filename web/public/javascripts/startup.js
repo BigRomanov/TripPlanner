@@ -10,6 +10,7 @@ require.config({
     angular: 'lib/angular',
     angularRoute: 'lib/angular-route',
     angularResource: 'lib/angular-resource',
+    angularAnimate: 'lib/angular-animate',
     bootstrap: 'lib/bootstrap.min',
     'ui-bootstrap': 'lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min',
     controllers: 'controllers',
@@ -43,6 +44,9 @@ require.config({
     'angularResource': {
       deps: ['angular'],
     },
+    'angularAnimate': {
+      deps: ['angular'],
+    },
     'bootstrap': {
       deps: ['jQuery'],
       exports : 'bootstrap'
@@ -71,6 +75,7 @@ require([
   'angular', 
   'angularRoute', 
   'angularResource', 
+  'angularAnimate', 
   'bootstrap', 
   'ui-bootstrap', 
   'bootstrap-tagsinput',

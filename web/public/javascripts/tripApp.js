@@ -1,12 +1,13 @@
 define(
   [
     'angular',
+    'angularAnimate',
     'ui-bootstrap'
   ],
   function(angular) {
     'use strict';
 
-    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable']);
+    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable', 'ngAnimate']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', '$provide',
       function($routeProvider, $locationProvider, $httpProvider, $provide) {
