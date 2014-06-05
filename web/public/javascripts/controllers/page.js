@@ -9,13 +9,15 @@ define(
     'use strict';
 
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
-      $scope.addingItem = false;
+
+      $scope.newItem = {url:""};
 
       if ($routeParams.id == 'new')
       {
         console.log("Create new page");
         pageModel.createPage(function(err, page) {
           $scope.page = page;
+
         });
 
       }
@@ -44,8 +46,7 @@ define(
 
       function getOrientation(item, callback) {
         
-        console.log(item);
-        if ('orientation' in item || item.images.length == 0) {
+        if ('orientation' in item || !('images' in item) || item.images.length == 0) {
           callback(null);
         }
         else {
@@ -65,7 +66,7 @@ define(
         }
       }
 
-      $scope.newItem = function() {
+      $scope.openNewItem = function() {
         var scrollPos = $(document).scrollTop();
 
         var itemsInLine = Math.floor($("#contentPane").width() / 400);
@@ -84,13 +85,18 @@ define(
       }
 
       $scope.addItem = function() {
-        if ($scope.newItemUrl) {
-          var newItem = {pageId:$scope.page._id, url:$scope.newItemUrl};
-          console.log('Adding new item',newItem);
+        if ($scope.newItem.url) {
+          var newItem = {pageId:$scope.page._id, url:$scope.newItem.url};
           pageModel.createItem(newItem, function(err, item) {
-            console.log("Adding new item2", item);
+            // TODO: Consider refactoring to preloadItem
+            item.pageId = $scope.page._id;
+            item.regular = true;
             getOrientation(item, function(err) {
-              $scope.page.items.push(item);
+              if (err)
+                console.log(err)
+              
+              console.log("Add new item at same location", $scope.new_item_index, item)
+              $scope.page.items[$scope.new_item_index] = item;  
             });
           });
         }
