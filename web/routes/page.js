@@ -89,20 +89,39 @@ exports.update =  function(req, res){
 };
 
 exports.remove =  function(req, res){
-  Page.remove({_id: req.params.id}, function(err, page) {
+  Page.remove({_id: req.params.id}, function(err) {
     if (err) { res.json(400, err); }
     else {
-      res.json(200, page)
+      res.json(200)
     }
   });
 };
 
 exports.save =  function(req, res){
-  // Page.({_id: req.params.id}, function(err, page) {
-  //   if (err) { res.json(400, err); }
-  //   else {
-  //     res.json(200, page)
-  //   }
-  // });
+  Page.findOne({_id:req.params.id}, function(err, page) {
+    if (err) {
+      res.json(400, err)
+    }
+    else {
+      if (page) {
+        Page.remove({_id: req.params.id}, function(err) {
+            if (err) { res.json(400, err); }
+            else {
+              console.log(page);
+              page._id = guid();
+              var newPage = new Page(page);
+              newPage.save(function(err, page) {
+                // TODO: Send the email
+                res.json(200, page)
+              });
+            }
+          });
+        
+      } else {
+        // no page found
+      }
+    }
+  });
+
   res.json(200);
 };

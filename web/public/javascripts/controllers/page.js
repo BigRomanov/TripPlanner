@@ -17,6 +17,7 @@ define(
         console.log("Create new page");
         pageModel.createPage(function(err, page) {
           $scope.page = page;
+          $scope.newpage = true;
 
         });
 

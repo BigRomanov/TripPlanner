@@ -3,7 +3,7 @@
   .action_item
     a(ng-click="openNewItem()")
       img(width=40 height=40 src="images/add_button.png")
-  .action_item
+  .action_item(ng-show="newpage")
     a(ng-click="savePage()")
       img(width=40 height=40 src="images/save_page.png")
 
