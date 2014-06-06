@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Page     = mongoose.model('Page');
 var _        = require('underscore');
+var extractor= require('../lib/extractor')
 
 
 exports.list =  function(req, res) {
@@ -21,42 +22,30 @@ exports.create =  function(req, res) {
   var pageId  = req.body.pageId;
   var itemUrl = req.body.url;
 
-  // Add url processing here...
-
-  // Image url for testing
-  //var itemImage = "http://i2.cdn.turner.com/cnn/dam/assets/140520162630-origami-fashion1-entertain-feature.jpg";
-
-  var itemImage = "http://rollingout.com/wp-content/uploads/2013/10/kim-kardashian-tao-silver-dress-1565676875.jpg";
-
-  // Server side calculation of image size
-  // var url = require('url');
-  // var http = require('http');
-
-  // var sizeOf = require('image-size');
-  // var options = url.parse(itemImage);
-
-  // http.get(options, function (response) {
-  //   var chunks = [];
-  //   response.on('data', function (chunk) {
-  //     chunks.push(chunk);
-  //   }).on('end', function() {
-  //     var buffer = Buffer.concat(chunks);
-  //     console.log(sizeOf(buffer));
-  //   });
-  // });
-
-  
-  // For now we make the title equal to the url
-  var itemTitle = itemUrl;
-
   if (pageId && itemUrl) {
+
+    // Check we have the page before diving into resolving
     Page.findOne({_id: pageId}, function(err, page) {
       if (err) {
         console.log("Unable to create item, page not found");
         res.json(400, err)
       }
       else {
-          var newItem = {title: itemTitle, url:itemUrl, images:[{url:itemImage}]};
+
+        var timeout = 2500; // ms
+        var info = extractor.analyze(itemUrl, timeout);
+
+        console.log("urlInfo returned 0: ");
+        console.log("%j", info);
+
+        setTimeout(function() {
+          console.log("urlInfo after waiting " + timeout + " ms:");
+          console.log("%j", info);
+
+          var title = _.keys(info.titles)[0]
+          var image = _.keys(info.images)[0]
+
+          var newItem = {title: title, url:itemUrl, images:[{url:image}]};
           page.items.push(newItem);
           page.save(function(err, page) {
             if (err) {
@@ -69,7 +58,8 @@ exports.create =  function(req, res) {
               res.json(200, newItem)
             }
           });
-      } 
+        }, timeout);
+      }
     });
   }
   else

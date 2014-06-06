@@ -77,12 +77,12 @@ define(
         var itemsInLine = Math.floor($("#contentPane").width() / 400);
         var line = Math.floor((scrollPos) / 200);
 
-        var index = (line+1) * itemsInLine;
+        var index = Math.min((line+1) * itemsInLine, $scope.page.items.length);
 
         $scope.new_item_index = index;
         $scope.page.items.splice(index, 0, {new_item:true});
 
-        console.log(itemsInLine, line, index);
+        console.log("itemsInLine: " + itemsInLine, "line: " + line, "index: " + index);
       }
 
       $scope.closeNewItem = function() {
@@ -103,22 +103,24 @@ define(
               
               console.log("Add new item at same location", $scope.new_item_index, item)
               $scope.page.items[$scope.new_item_index] = item;  
+              $scope.addingNewItem = false;
             });
           });
         }
       }
 
-      $scope.deleteItem = function(itemId) {
-        var item = {
-          pageId: $scope.page._id,
-          itemId: itemId
-        }
+      $scope.deleteItem = function(item) {
+        console.log("Deleting item: ", item);
+        
+        item.pageId =  $scope.page._id,
 
         pageModel.deleteItem(item, function(err, item) {
-          // TODO: Check for error
+          if (err)
+            console.log(err);
+
           for(var i = 0; i < $scope.page.items.length; i++) {
             console.log($scope.page.items[i]);
-            if (itemId == $scope.page.items[i]._id) {
+            if (item.itemId == $scope.page.items[i]._id) {
               $scope.page.items.splice(i,1);
               return;
             }

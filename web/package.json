@@ -22,6 +22,9 @@
     "memory-store": "*", 
     "redis": "*",
     "cors": "*",
-    "mongo-express": "*"
+    "mongo-express": "*",
+    "imagesize":"*",
+    "request":"*",
+    "cheerio":"*"
   }
 }

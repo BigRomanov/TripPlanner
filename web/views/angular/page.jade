@@ -27,7 +27,9 @@
             .itemImageWrapper(ng-show="item.images.length > 0")
               img(style="height:200px" ng-src="{{item.images[0].url}}")
             .itemMetaWrapper
+              a(ng-click="deleteItem({itemId:item._id})") Delete
               .itemMeta
+                {{item.title}}
                 {{item.url}}
       #newItem(ng-if="item.new_item" )
         .newItemUrl(style="width:540px;margin:auto")
