@@ -105,7 +105,7 @@ define(
           controller: 'adminController'
         });
 
-        $routeProvider.when('/test', {
+        $routeProvider.when('/test/:id', {
           templateUrl: 'angular/test',
           controller: 'testController'
         });
