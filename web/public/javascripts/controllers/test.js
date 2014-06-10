@@ -14,7 +14,7 @@ define(
         
         if ('orientation' in item) {
           if (item.orientation == 1) {
-            item.sizeX = 1;
+            item.sizeX = 4;
             item.sizeY = 1;
           }
           else {
