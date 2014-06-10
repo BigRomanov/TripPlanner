@@ -6,12 +6,14 @@ require.config({
     underscore: 'lib/underscore.min',
     async : 'lib/async',
     jQuery: 'lib/jquery-2.0.3.min',
-    'jQueryui': 'lib/jquery-ui-1.10.4.custom.min',
+    'jQueryui': 'lib/jquery-ui-1.10.4.full',
     angular: 'lib/angular',
     angularRoute: 'lib/angular-route',
     angularResource: 'lib/angular-resource',
     angularAnimate: 'lib/angular-animate',
     bootstrap: 'lib/bootstrap.min',
+    angularGridster: 'lib/angular-gridster.min',
+    'detect-resize' : 'lib/detect-element-resize',
     'ui-bootstrap': 'lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min',
     controllers: 'controllers',
     filters: 'filters',
@@ -66,7 +68,14 @@ require.config({
     },
     'sortable' : {
       deps: ['jQuery', 'jQueryui', 'angular']
-    }
+    },
+    'detect-resize' : {
+      deps: ['jQueryui'],
+    },
+    'angularGridster': {
+      deps: ['jQueryui', 'bootstrap', 'angular'],
+      exports: 'gridster'
+    },
   }
 });
 
@@ -76,6 +85,7 @@ require([
   'angularRoute', 
   'angularResource', 
   'angularAnimate', 
+  'angularGridster', 
   'bootstrap', 
   'ui-bootstrap', 
   'bootstrap-tagsinput',
@@ -88,6 +98,7 @@ require([
   'controllers/home',
   'controllers/page',
   'controllers/admin',
+  'controllers/test',
   'controllers/login',], function($, angular) {
     angular.bootstrap(document, ['tripApp']);
   });

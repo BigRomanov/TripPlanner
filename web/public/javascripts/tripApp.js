@@ -2,12 +2,13 @@ define(
   [
     'angular',
     'angularAnimate',
+    'angularGridster',
     'ui-bootstrap'
   ],
   function(angular) {
     'use strict';
 
-    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable', 'ngAnimate']);
+    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable', 'ngAnimate', 'gridster']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', '$provide',
       function($routeProvider, $locationProvider, $httpProvider, $provide) {
@@ -103,6 +104,12 @@ define(
           templateUrl: 'angular/admin',
           controller: 'adminController'
         });
+
+        $routeProvider.when('/test', {
+          templateUrl: 'angular/test',
+          controller: 'testController'
+        });
+
 
         $routeProvider.otherwise({
           redirectTo: '/home'
