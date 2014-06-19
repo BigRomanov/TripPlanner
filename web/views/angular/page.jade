@@ -19,8 +19,8 @@
 
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-  .gridElements(ui-sortable ng-model="page.items")
-    div(ng-repeat="item in page.items" class="animate-items")
+  .gridElements(gridster="gridsterOpts")
+    div(gridster-item="item" ng-repeat="item in page.items" class="animate-items")
       .itemWrapper(ng-if="item.regular")
         .itemWrapper.itemBase
           .div(ng-class="{1:'item_v_1', 2:'item_h_1'}[item.orientation]")
@@ -31,12 +31,4 @@
               .itemMeta
                 {{item.title}}
                 {{item.url}}
-      #newItem(ng-if="item.new_item" )
-        .newItemUrl(style="width:540px;margin:auto")
-          input(style="width:400px;height:30px;float:left", ng-model="newItem.url", placeholder="Enter new item URL")
-          .newItemActions(style="margin-top:10px")
-            a(ng-click="closeNewItem()" style="float:left;margin-left:5px") 
-              img(src="images/x_button.png" style="width:30px;height:30px")
-            a(ng-click="addItem()" style="float:left;margin-left:5px;") 
-              img(src="images/ok_button.png" style="width:30px;height:30px")
           

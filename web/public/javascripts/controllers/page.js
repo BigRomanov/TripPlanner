@@ -10,7 +10,36 @@ define(
 
     var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
 
-      $scope.newItem = {url:""};
+      $scope.gridsterOpts = {
+        columns: 4, // the width of the grid, in columns
+        width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
+        colWidth: '210', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
+        rowHeight: '280', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
+        margins: [10, 10], // the pixel distance between each widget
+        isMobile: false, // stacks the grid items if true
+        minColumns: 1, // the minimum columns the grid must have
+        minRows: 2, // the minimum height of the grid, in rows
+        maxRows: 100,
+        defaultSizeX: 2, // the default width of a gridster item, if not specifed
+        defaultSizeY: 1, // the default height of a gridster item, if not specified
+        mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
+        autogrow_cols:true,
+        resizable: {
+           enabled: false,
+           start: function(event, uiWidget, $element) {}, // optional callback fired when resize is started,
+           resize: function(event, uiWidget, $element) {}, // optional callback fired when item is resized,
+           stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished resizing
+        },
+        draggable: {
+           enabled: true, // whether dragging items is supported
+           //handle: '.my-class', // optional selector for resize handle
+           start: function(event, uiWidget, $element) {}, // optional callback fired when drag is started,
+           drag: function(event, uiWidget, $element) {}, // optional callback fired when item is moved,
+           stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished dragging
+        }
+      };
+
+      $scope.newItem = {url:"test"};
       
       if ($routeParams.id == 'new')
       {
@@ -63,34 +92,62 @@ define(
 
           }
 
-          img.src = item.images[0].url;  
+          console.log(item);
+          if ('images' in item && item.images.length > 0 && 'url' in item.images[0] &&item.images[0].url ) {
+            img.src = item.images[0].url;  
+          }
+          else {
+            item.orientation = 0;
+            callback(null);
+          }
         }
       }
 
+
+      var NewItemCtrl = function ($scope, $modalInstance, url) {
+        $scope.newItem = {'url' : url};
+
+        $scope.ok = function () {
+          $modalInstance.close($scope.newItem);
+        };
+
+        $scope.cancel = function () {
+          $modalInstance.dismiss('cancel');
+        };
+      };
+
       $scope.openNewItem = function() {
-        if ($scope.addingNewItem)
-          return;
 
-        $scope.addingNewItem = true;
-        var scrollPos = $(document).scrollTop();
+        var modalInstance = $modal.open({
+          templateUrl: 'angular/newitem',
+          controller: NewItemCtrl,
+          resolve: {
+            url: function () {
+              return $scope.newItem.Url;
+            }
+          }
+        });
 
-        var itemsInLine = Math.floor($("#contentPane").width() / 400);
-        var line = Math.floor((scrollPos) / 200);
-
-        var index = Math.min((line+1) * itemsInLine, $scope.page.items.length);
-
-        $scope.new_item_index = index;
-        $scope.page.items.splice(index, 0, {new_item:true});
-
-        console.log("itemsInLine: " + itemsInLine, "line: " + line, "index: " + index);
+        modalInstance.result.then(function (newItem) {
+          // TODO: The newItem in external scope is not really necessary if
+          // addItem is called directly from modal
+          $scope.newItem = newItem;
+          $scope.addItem();
+        }, function () {
+          // think about something to do here
+        });
       }
 
-      $scope.closeNewItem = function() {
-        $scope.page.items.splice($scope.new_item_index, 1);  
-        $scope.addingNewItem = false;      
+      function calculateNewItemIndex() {
+        var scrollPos = $(document).scrollTop();
+        var itemsInLine = Math.floor($("#contentPane").width() / 400);
+        var line = Math.floor((scrollPos) / 200);
+        var index = Math.min((line+1) * itemsInLine, $scope.page.items.length);
+        return index;
       }
 
       $scope.addItem = function() {
+        console.log("Creating new item:", $scope.newItem)
         if ($scope.newItem.url) {
           var newItem = {pageId:$scope.page._id, url:$scope.newItem.url};
           pageModel.createItem(newItem, function(err, item) {
@@ -101,9 +158,9 @@ define(
               if (err)
                 console.log(err)
               
-              console.log("Add new item at same location", $scope.new_item_index, item)
-              $scope.page.items[$scope.new_item_index] = item;  
-              $scope.addingNewItem = false;
+              var index = calculateNewItemIndex();
+              console.log("Add new item at same location", index, item)
+              $scope.page.items[index] = item;  
             });
           });
         }

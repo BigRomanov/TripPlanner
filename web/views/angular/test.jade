@@ -1,5 +1,6 @@
 h1 Welcome to the best Trip Organizer in the world!
 
+button(ng-click="changeColumns()") Change number of columns
 div(gridster="gridsterOpts")
   ul
     li(gridster-item="item" ng-repeat="item in page.items")

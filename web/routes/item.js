@@ -31,21 +31,19 @@ exports.create =  function(req, res) {
         res.json(400, err)
       }
       else {
-
-        var timeout = 2500; // ms
-        var info = extractor.analyze(itemUrl, timeout);
-
-        console.log("urlInfo returned 0: ");
-        console.log("%j", info);
-
-        setTimeout(function() {
+        // Use analyzer to create a new page
+        var timeout = 2500;
+        extractor.analyze(itemUrl, timeout, function(info) {
           console.log("urlInfo after waiting " + timeout + " ms:");
           console.log("%j", info);
-
-          var title = _.keys(info.titles)[0]
-          var image = _.keys(info.images)[0]
+        
+          var title = ('titles' in info && _.keys(info.titles).length > 0) ? _.keys(info.titles)[0] : null
+          var image = ('images' in info && _.keys(info.images).length > 0) ? _.keys(info.images)[0] : null
 
           var newItem = {title: title, url:itemUrl, images:[{url:image}]};
+
+          console.log("New item: ", newItem);
+
           page.items.push(newItem);
           page.save(function(err, page) {
             if (err) {
@@ -58,7 +56,7 @@ exports.create =  function(req, res) {
               res.json(200, newItem)
             }
           });
-        }, timeout);
+        });
       }
     });
   }

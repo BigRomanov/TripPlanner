@@ -14,7 +14,7 @@ define(
         
         if ('orientation' in item) {
           if (item.orientation == 1) {
-            item.sizeX = 4;
+            item.sizeX = 1;
             item.sizeY = 1;
           }
           else {
@@ -23,7 +23,7 @@ define(
           }
           callback(null);
         }
-        if (!('images' in item) || item.images.length == 0) {
+        else if (!('images' in item) || item.images.length == 0) {
           
           callback(null);
         }
@@ -45,10 +45,10 @@ define(
       }
 
       $scope.gridsterOpts = {
-        columns: 4, // the width of the grid, in columns
+        columns: 6, // the width of the grid, in columns
         width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
-        colWidth: 'auto', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
-        rowHeight: 'match', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
+        colWidth: '210', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
+        rowHeight: '280', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
         margins: [10, 10], // the pixel distance between each widget
         isMobile: false, // stacks the grid items if true
         minColumns: 1, // the minimum columns the grid must have
@@ -57,6 +57,7 @@ define(
         defaultSizeX: 2, // the default width of a gridster item, if not specifed
         defaultSizeY: 1, // the default height of a gridster item, if not specified
         mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
+        autogrow_cols:true,
         resizable: {
            enabled: true,
            start: function(event, uiWidget, $element) {}, // optional callback fired when resize is started,
@@ -71,20 +72,7 @@ define(
            stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished dragging
         }
       };
-
-      $scope.standardItems = [
-        { sizeX: 2, sizeY: 1, row: 0, col: 0 },
-        { sizeX: 2, sizeY: 2, row: 0, col: 2 },
-        { sizeX: 1, sizeY: 1, row: 0, col: 4 },
-        { sizeX: 1, sizeY: 1, row: 0, col: 5 },
-        { sizeX: 2, sizeY: 1, row: 1, col: 0 },
-        { sizeX: 1, sizeY: 1, row: 1, col: 4 },
-        { sizeX: 1, sizeY: 2, row: 1, col: 5 },
-        { sizeX: 1, sizeY: 1, row: 2, col: 0 },
-        { sizeX: 2, sizeY: 1, row: 2, col: 1 },
-        { sizeX: 1, sizeY: 1, row: 2, col: 3 },
-        { sizeX: 1, sizeY: 1, row: 2, col: 4 }
-      ];
+ 
 
       console.log("Load existing page");
       pageModel.loadPage($routeParams.id, function(err, page) {
