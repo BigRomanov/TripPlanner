@@ -39,43 +39,33 @@ define(
         }
       };
 
-      $scope.newItem = {url:"test"};
+      $scope.newItem   = { url  : "" };
       
       if ($routeParams.id == 'new')
       {
-        console.log("Create new page");
         pageModel.createPage(function(err, page) {
           $scope.page = page;
           $scope.newpage = true;
-
         });
-
       }
       else {
-        console.log("Load existing page");
         pageModel.loadPage($routeParams.id, function(err, page) {
-
-          // Perfrom some preprocessing on the loaded list
           async.each(page.items, 
-            function(item, callback) {
-              item.pageId = page._id;
-              item.regular = true;
-              getOrientation(item, callback);
-            }, 
-            function(err){
-            // if any of the saves produced an error, err would equal that error
+          function(item, callback) {
+            item.pageId = page._id;
+            item.regular = true;
+            getOrientation(item, callback);
+          }, 
+          function(err) {
             if (err) {
               console.log("Some error occured when calculating orientation", err);
             }
-            
             $scope.page = page;
           });
-          
         })
       }
 
       function getOrientation(item, callback) {
-        
         if ('orientation' in item || !('images' in item) || item.images.length == 0) {
           callback(null);
         }
@@ -123,7 +113,7 @@ define(
           controller: NewItemCtrl,
           resolve: {
             url: function () {
-              return $scope.newItem.Url;
+              return $scope.newItem.url;
             }
           }
         });
@@ -185,9 +175,33 @@ define(
         });
       }
 
+      // ///////////////////////////////////////////////
+      var UserEmailCtrl = function ($scope, $modalInstance) {
+        $scope.userEmail = "";
+
+        $scope.ok = function () {
+          $modalInstance.close($scope.userEmail);
+        };
+
+        $scope.cancel = function () {
+          $modalInstance.dismiss('cancel');
+        };
+      };
+
       $scope.savePage = function() {
-        pageModel.savePage($scope.page._id, function(err, page) {
-          $scope.message = "Page saved!";
+        // Request user email
+        var modalInstance = $modal.open({
+          templateUrl: 'angular/useremail',
+          controller: UserEmailCtrl,
+        });
+
+        modalInstance.result.then(function (userEmail) {
+          console.log("Send permalink to: ", userEmail);
+          //pageModel.savePage($scope.page._id, function(err, page) {
+          //  $scope.message = "Page saved!";
+          //});
+        }, function () {
+          // think about something to do here
         });
       }
     };

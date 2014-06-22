@@ -34,6 +34,18 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
+      deletePage: function(pageId, callback) {
+        $http({
+          method: "DELETE",
+          url: "http://localhost:3000/page/"+ pageId
+        }).success(function(data, status, headers, config) {
+          console.log("SUCCESS: Loaded page", data);
+          callback(null, data);
+        }).error(function(data, status, headers, config) {
+          console.log("ERROR: Could not load page", data);  
+          callback(data);
+        });
+      },
       savePage: function(id, callback) {
         $http({
           method: "POST",
@@ -60,11 +72,11 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
-      deleteItem: function(item, callback) {
+      deleteItem: function(pageId, itemId, callback) {
         console.log('Create new item', item);
         $http({
           method: "DELETE",
-          url: "http://localhost:3000/item/"+item.itemId+"?pageId="+item.pageId
+          url: "http://localhost:3000/item/"+itemId+"?pageId="+pageId
         }).success(function(data, status, headers, config) {
           console.log("SUCCESS: Deleted item", data);
           callback(null, data);

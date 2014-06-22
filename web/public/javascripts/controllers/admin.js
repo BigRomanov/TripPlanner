@@ -26,8 +26,26 @@ define(
         });
       }
 
+      $scope.deletePage = function(pageId) {
+        console.log("Delete page id", pageId);
+        var r = confirm("Are you sure you want to delete this page?");
+
+        if (r == true) {
+          adminService.deletePage(pageId, function(err, data) {
+            if (err) {
+              alert("Error: unable to delete page");
+            }
+            else {
+              adminService.allPages(function(err, data) {
+                $scope.pages = data['pages'];
+              })
+            }
+          });
+        } 
+      }
+
       $scope.deleteItem = function(pageId, itemId) {
-         adminService.deleteItem({pageId:pageId, itemId:itemId}, function(err, data) {
+         adminService.deleteItem(pageId, itemId, function(err, data) {
           if (err) {
             alert("Error: unable to delete item");
           }

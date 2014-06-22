@@ -1,21 +1,21 @@
-h1 Admin
-
+h1 Admin ({{pages.length}} pages)
 button(ng-click="deleteAllPages()") Delete all pages
 
 div#adminContent(style="padding:10px")
 ul
   li(ng-repeat="page in pages")
-    .admin_page(style="border-bottom:1px solid #ccc;padding:4px;margin:5px")
-      a(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
-      a(href="http://localhost:3000/#/test/{{page._id}}" target="_blank") (test)
+    .admin_page(ng-mouseenter="spa=true" ng-mouseleave="spa=false" ng-class="{selected: spa==true}")
+      .admin_item_actions(ng-show="spa")
+        a(ng-click="deletePage(page._id)" target="_blank") 
+          img(src="/images/admin_item_delete.png")
+      a.admin_page_url(href="http://localhost:3000/#/pages/{{page._id}}" target="_blank") {{page._id}}
       ul
         li(ng-repeat="item in page.items" style="display:block")
-          .admin_item(style="height:20px;" ng-mouseenter="showactions=true" ng-mouseleave="showactions=false" ng-class="{selected: showactions==true}")
+          .admin_item(style="height:20px;width:100%" ng-mouseenter="showactions=true" ng-mouseleave="showactions=false" ng-class="{selected: showactions==true}")
             .admin_item_actions(ng-show="showactions")
               a(ng-click="deleteItem(page._id,item._id)" target="_blank") 
                 img(src="/images/admin_item_delete.png")
-            .admin_item_title.truncate
-              a(href="{{item.url}}" target="_blank") {{item.title}}
+            a.admin_item_url(href="{{item.url}}" target="_blank") {{item.title || "Empty title"}}
 
             .clear
             

@@ -34,8 +34,11 @@ define(
             callback(data);
           });
         },
-        deleteItem : function(item, callback) {
-          pageModel.deleteItem(item, callback);
+        deleteItem : function(pageId, itemId, callback) {
+          pageModel.deleteItem(pageId, itemId, callback);
+        },
+        deletePage : function(pageId, callback) {
+          pageModel.deletePage(pageId, callback);
         }
       }
 

@@ -106,10 +106,37 @@ ul {
   height:20px;
   margin:5px;
   width:600px;
+  padding-left: 20px;
+}
+
+.admin_item a { text-decoration: none; }
+
+.admin_item_url {
+  display:block;
+  margin-left: 25px;
+  text-decoration: none;
+}
+
+.admin_page a { text-decoration: none; }
+
+.admin_page {
+  border-bottom:1px solid #ccc;
+  padding:4px;
+  margin:5px;
+}
+
+.admin_page_url {
+  display:block;
+  margin-left: 25px;
+  text-decoration: none;
+}
+
+.admin_page_url :hover{
+  text-decoration: none;
 }
 
 .admin_page.selected {
-  border:1px solid #ccc;
+  
 }
 
 .admin_item.selected {
@@ -122,7 +149,9 @@ ul {
 }
 
 .admin_item_actions {
-  float:right;
+  width:20px;
+  height:20px;
+  float:left;
 }
 
 .main_content{
