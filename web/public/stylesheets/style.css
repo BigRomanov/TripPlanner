@@ -85,6 +85,11 @@ ul {
   width:40px;
   height:40px;
   margin:auto;
+  padding:2px;
+}
+
+.action_item .activated {
+  border-top:1px solid #ccc;
 }
 
 #contentPane {
@@ -198,5 +203,12 @@ ul {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 12px;
     overflow-wrap: break-word;
+}
+
+/* Styling for the new item modal dialog */
+.new_item_modal_button {
+  display:block;
+  width:30px;
+  height:30px;
 }
 
