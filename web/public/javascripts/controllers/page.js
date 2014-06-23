@@ -12,15 +12,15 @@ define(
 
       $scope.gridsterOpts = {
         columns: 4, // the width of the grid, in columns
-        width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
-        colWidth: '210', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
-        rowHeight: '280', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
+        width:'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
+        colWidth: '220', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
+        rowHeight: '290', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
         margins: [10, 10], // the pixel distance between each widget
         isMobile: false, // stacks the grid items if true
         minColumns: 1, // the minimum columns the grid must have
         minRows: 2, // the minimum height of the grid, in rows
         maxRows: 100,
-        defaultSizeX: 2, // the default width of a gridster item, if not specifed
+        defaultSizeX: 1, // the default width of a gridster item, if not specifed
         defaultSizeY: 1, // the default height of a gridster item, if not specified
         mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
         autogrow_cols:true,
@@ -204,7 +204,28 @@ define(
           // think about something to do here
         });
       }
+
+      // ----- Temporary code for changing the size of the template ---------
+      // ----- Will be in a dedicated directive
+      $scope.map = {
+        0: '230',
+        1: '430',
+        2: '650',
+        3: '870'
+      };
+      $scope.counter = 0;
+      $scope.click = function() {
+        $scope.counter = ($scope.counter + 1) % 4;
+      };
+      $scope.$watch('counter',function(){
+        console.log($scope.counter);
+        console.log($scope.gridsterOpts.colWidth)
+        console.log($scope.map[$scope.counter])
+        $scope.gridsterOpts.colWidth = $scope.map[$scope.counter];
+      })
     };
+
+    // ----- end of temporary code --------------------------------------------
 
     tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);
 

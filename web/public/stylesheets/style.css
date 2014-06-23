@@ -3,6 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+
+
+
 a {
   color: #00B7FF;
 }
@@ -52,7 +55,7 @@ ul {
   box-shadow: 10px 10px 5px #888888;
 }
 
-.animate-items.ng-enter, 
+.animate-items.ng-enter,
 .animate-items.ng-leave
 { 
     -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
@@ -155,79 +158,82 @@ ul {
 }
 
 .main_content{
-  margin: 20px, 30px;
+  margin: 20px 30px;
 }
 
-.gridElements {
-
+#gridWrapper {
+    width: 90%;
+    max-width: 1100px;
+    min-width: 800px;
+    margin: 50px auto;
 }
 
-.itemBase {
-    position:relative;
-}
-
-.itemWrapper {
+.itemSize0{
+    width: 100%;
+    height: 100%;
     position: relative;
-    width: 380px;
-    height: 200px;
-    font-size: 11px;
-    overflow: hidden;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
-    background: #fff;
-    float: left;
-    margin: 10px;
-}
-
-.item_v_1 {
-    width: inherit;
-    height: inherit;
-}
-
-.item_h_1 {
-    width: inherit;
-    height: inherit;
-}
-
-
-.item_v_1 .itemImageWrapper {
-    width: 200px;
-    height: inherit;
-    float: left;
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid;
-}
-
-.item_v_1 .itemMetaWrapper {
-    width: 180px;
-    height: inherit;
-    float: right;
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 0;
-}
-
-.item_h_1 .itemImageWrapper {
-    height:140px;
-    width: inherit;
-    float: left;
-    position:absolute;
     overflow: hidden;
+    font-size: 11px;
 }
 
-.item_h_1 .itemMetaWrapper {
-    height: 60px;
-    width:inherit;
-    top: 140px;
-    bottom: 0;
-    right: 0;
+.itemSize0 .itemButtonsWrapper{
+    width:100%;
+    height: 200px;
+}
+
+.itemSize0 .itemActionButtonsWrapper{
+    position:relative;
+    top:8px;
+    left:8px;
+    z-index: 101;
+}
+
+.itemSize0 .itemActionButtonsWrapper .btn{
+    border-radius: 4px;
+    box-shadow: 0 1px 2px;
+    border: 1px solid rgba(0,0,0,0.3);
+    float: left;
+}
+
+.itemSize0 .itemDeleteButtonsWrapper{
+    position:absolute;
+    top:0;
+    right:8px;
+    z-index: 101;
+}
+
+.itemSize0 .itemDeleteButtonsWrapper .btn{
+    border-radius: 4px;
+    box-shadow: 0 1px 2px;
+    border: 1px solid rgba(0,0,0,0.3);
+    float: left;
+}
+
+.itemSize0 .itemImageWrapper {
+    cursor: hand;
+    width: inherit;
+    height: 200px;
+    position: relative;
+    top: 0;
     left: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.itemSize0 .itemImageWrapper .itemImg{
+    width:210px;
+    height:200px;
     position: relative;
 }
 
-.itemMeta {
-    position: absolute;
+.itemSize0 .itemMeta {
+    width: 100%;
+    height:80px;
+    background-color: #fbfbfb;
+    position: relative;
+    bottom: 0;
     padding: 10px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 12px;
