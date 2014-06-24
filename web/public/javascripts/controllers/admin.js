@@ -14,6 +14,10 @@ define(
         $scope.pages = data['pages'];
       })
 
+      $scope.go = function ( path ) {
+        $location.path( path );
+      };
+
       $scope.deleteAllPages = function() {
         adminService.deleteAllPages(function(err, data) {
           if (err) {

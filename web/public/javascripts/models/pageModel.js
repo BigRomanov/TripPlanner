@@ -46,10 +46,14 @@ function($, _, tripApp, $http) {
           callback(data);
         });
       },
-      savePage: function(id, callback) {
+      savePage: function(id, email, callback) {
         $http({
           method: "POST",
-          url: "http://localhost:3000/page/"+ id+"/save"
+          url: "http://localhost:3000/page/save",
+          data: {
+            'pageId':id,
+            'email' : email
+          }
         }).success(function(data, status, headers, config) {
           console.log("SUCCESS: Saved page", data);
           callback(null, data);

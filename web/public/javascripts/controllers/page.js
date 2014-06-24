@@ -177,10 +177,10 @@ define(
 
       // ///////////////////////////////////////////////
       var UserEmailCtrl = function ($scope, $modalInstance) {
-        $scope.userEmail = "";
+        $scope.user = {'email' : "" } ;
 
         $scope.ok = function () {
-          $modalInstance.close($scope.userEmail);
+          $modalInstance.close($scope.user.email);
         };
 
         $scope.cancel = function () {
@@ -195,11 +195,12 @@ define(
           controller: UserEmailCtrl,
         });
 
-        modalInstance.result.then(function (userEmail) {
-          console.log("Send permalink to: ", userEmail);
-          //pageModel.savePage($scope.page._id, function(err, page) {
-          //  $scope.message = "Page saved!";
-          //});
+        modalInstance.result.then(function (email) {
+          console.log("Send permalink to: ", email);
+          pageModel.savePage($scope.page._id, email, function(err, page) {
+            console.log("Page saved with permalink for user: ", email)
+           $scope.message = "Page saved!";
+          });
         }, function () {
           // think about something to do here
         });
