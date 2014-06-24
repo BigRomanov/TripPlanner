@@ -23,17 +23,20 @@
   #gridWrapper(gridster="gridsterOpts")
     div(gridster-item="item" ng-repeat="item in page.items", ng-mouseenter="showButtons=true",ng-mouseleave="showButtons=false", ng-init="showButtons=false")
       div(ng-if="item.regular", ng-class="{0:'itemSize0', 1:'itemSize1', 2:'itemSize2', 3:'itemSize3'}[counter]")
-        .itemButtonsWrapper
-          .itemActionButtonsWrapper(ng-show="showButtons")
-            .deleteButtonWrapper.pull-right
-              button.btn(ng-href="") X
-            .changeTemplateButtonWrapper.pull-left
-              a.btn(ng-href="", ng-click="click()") T
+        .itemMeta
+          p(style="font-weight:bold") {{item.title}}
+          //p(ng-if="counter!=0") {{item.url}}
+        .itemActionsWrapper
           .itemImageWrapper
             img.itemImg(ng-src="{{item.images[0].url}}")
-        .itemMeta
-          p {{item.title}}
-          //p(ng-if="counter!=0") {{item.url}}
+            ul.itemButtonsWrapper(ng-show="showButtons")
+              li.ButtonWrapper
+                button.itemBtn(ng-href="") X
+              li.ButtonWrapper
+                button.itemBtn(ng-href="", ng-click="click()") T
+        .itemDescriptionWrapper
+          p hi there. this is some description for test. are you satisfied with what you see here?
+
 
 
 
