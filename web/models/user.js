@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 
-var userSchema = mongoose.Schema({
+var User = mongoose.Schema({
     email:    String,
     password: String,
     dateAdded: { type: Date, default: Date.now },
-    pages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Page' }]
+    pages: { type: [mongoose.Schema.Types.ObjectId], ref: 'Page' }
 });
-userSchema.methods.validPassword = function (password) {
+
+User.methods.validPassword = function (password) {
   if (password === this.password) {
     return true; 
   } else {
@@ -14,7 +15,15 @@ userSchema.methods.validPassword = function (password) {
   }
 }
 
-mongoose.model('User', userSchema);
+User.method({
+  notifyOnNewPage : function(page, callback) {
+    console.log("Send an email that new page was created with id", page._id);
+
+    callback(null);
+  }
+});
+
+mongoose.model('User', User);
 
 
 //

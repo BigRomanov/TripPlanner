@@ -9,14 +9,18 @@ var Items = mongoose.Schema({
 });
 
 var Page = mongoose.Schema({
-    _id:    String,
-    _user: { type: Number, ref: 'User' },
+    _user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     title : String,
     createdAt: Date,
     items:[Items]
 });
 
 Page.method({
+  clone : function(page) {
+    this.title      = page.title;
+    this.createdAt  = page.createdAt;
+    this.items      = page.items;
+  },
   getItem : function(itemId, callback) {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i]._id == itemId)
