@@ -145,11 +145,14 @@ app.delete('/item/:id', item.remove)
 
 // Some simplistic temporary admin routes
 app.get('/admin/pages',       admin.pages)
+app.get('/admin/users',       admin.users)
 app.delete('/admin/pages',    admin.deleteAllPages)
 
 // Served .jade angular partials
 app.get('/angular/:name', function (req, res)
- { var name = req.params.name;
+{ 
+   console.log("Render angular view:", req.params.name);
+   var name = req.params.name;
    res.render('angular/' + name);
 });
 

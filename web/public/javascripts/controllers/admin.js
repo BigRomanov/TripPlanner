@@ -12,7 +12,11 @@ define(
       // Load all pages for simplified admin
       adminService.allPages(function(err, data) {
         $scope.pages = data['pages'];
-      })
+      });
+
+      adminService.allUsers(function(err, data) {
+        $scope.users = data['users'];
+      });
 
       $scope.go = function ( path ) {
         $location.path( path );

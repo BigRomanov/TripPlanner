@@ -100,8 +100,13 @@ define(
           controller: 'loginController'
         });
 
-        $routeProvider.when('/admin', {
-          templateUrl: 'angular/admin',
+        $routeProvider.when('/admin/pages', {
+          templateUrl: 'angular/admin_pages',
+          controller: 'adminController'
+        });
+
+        $routeProvider.when('/admin/users', {
+          templateUrl: 'angular/admin_users',
           controller: 'adminController'
         });
 

@@ -22,6 +22,18 @@ define(
             callback(data);
           });
         },
+        allUsers: function(callback) {
+          $http({
+            method: "GET",
+            url: "http://localhost:3000/admin/users"
+          }).success(function(data, status, headers, config) {
+            console.log("adminService::SUCCESS: Loaded pages", data);
+            callback(null, data);
+          }).error(function(data, status, headers, config) {
+            console.log("adminService::ERROR: Could not load pages", data);
+            callback(data);
+          });
+        },
         deleteAllPages: function(callback) {
           $http({
             method: "DELETE",

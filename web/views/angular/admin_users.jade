@@ -1,0 +1,23 @@
+h1 Admin ({{users.length}} users)
+
+div#adminContent(style="padding:10px")
+ul
+  li(ng-repeat="user in users")
+    .admin_page(ng-mouseenter="spa=true" ng-mouseleave="spa=false" ng-class="{selected: spa==true}")
+      .admin_item_actions(ng-show="spa")
+        a(ng-click="deleteUser(user._id)" target="_blank") 
+          img(src="/images/admin_item_delete.png")
+      p {{user.email}}
+      ul
+        li(ng-repeat="page in user.pages" style="display:block")
+          .admin_item(style="height:20px;width:100%" ng-mouseenter="showactions=true" ng-mouseleave="showactions=false" ng-class="{selected: showactions==true}")
+            .admin_item_actions(ng-show="showactions")
+              a(ng-click="deletePage(page._id)" target="_blank") 
+                img(src="/images/admin_item_delete.png")
+            a.admin_page_url(href="http://localhost:3000/#/pages/{{page}}" target="_blank") {{page}}
+
+            .clear
+            
+          
+    
+            
