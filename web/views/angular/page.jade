@@ -19,23 +19,10 @@
 
   p(ng-show="page.items.length == 0") There are no items on this page, add some!
 
-
   #gridWrapper(gridster="gridsterOpts")
     div(gridster-item="item" ng-repeat="item in page.items", ng-mouseenter="showButtons=true",ng-mouseleave="showButtons=false", ng-init="showButtons=false")
       div(ng-if="item.regular", ng-class="{0:'itemSize0', 1:'itemSize1', 2:'itemSize2', 3:'itemSize3'}[counter]")
-        .itemMeta
-          p(style="font-weight:bold") {{item.title}}
-          //p(ng-if="counter!=0") {{item.url}}
-        .itemActionsWrapper
-          .itemImageWrapper
-            img.itemImg(ng-src="{{item.images[0].url}}")
-            ul.itemButtonsWrapper(ng-show="showButtons")
-              li.ButtonWrapper
-                button.itemBtn(ng-href="") X
-              li.ButtonWrapper
-                button.itemBtn(ng-href="", ng-click="click()") T
-        .itemDescriptionWrapper
-          p hi there. this is some description for test. are you satisfied with what you see here?
+        trip-item
 
 
 
