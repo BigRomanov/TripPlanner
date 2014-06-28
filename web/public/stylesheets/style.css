@@ -350,6 +350,166 @@ ul {
 
 /*item size 2 end */
 
+/* item size 3 start */
+
+.itemSize3 .itemActionsWrapper{
+    position: absolute;
+    left: 0;
+    top: 80px;
+    max-width:390px;
+    max-height: 200px;
+}
+
+.itemSize3 .itemActionsWrapper .itemButtonsWrapper{
+    position: absolute;
+    bottom: 0;
+    z-index: 101;
+    width:50px;
+    height:200px;
+}
+
+.itemSize3 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
+    position: relative;
+    margin-top: 5px;
+    z-index: 102;
+    width: 32px;
+    height: 32px;
+}
+
+.itemSize3 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
+    box-shadow: 0 1px 2px;
+    position: relative;
+    background-color: #004099;
+    border-radius: 4px;
+    width: inherit;
+    height: inherit;
+}
+
+.itemSize3 .itemActionsWrapper .itemImageWrapper {
+    cursor: hand;
+    width: inherit;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.itemSize3 .itemActionsWrapper .itemImageWrapper .itemImg{
+    width:inherit;
+    height:inherit;
+    position: relative;
+}
+
+.itemSize3 .itemDescriptionWrapper{
+    max-width: 260px;
+    height: inherit;
+    background-color: #eaeaea;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    padding: 5px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.itemSize3 .itemDescriptionWrapper p{
+
+}
+
+.itemSize3 .itemMeta {
+    width: 100%;
+    height:80px;
+    background-color: #fbfbfb;
+    position: relative;
+    bottom: 0;
+    padding: 5px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    overflow-wrap: break-word;
+}
+
+/*item size 3 end */
+
+/* item size 4 start */
+
+.itemSize4 .itemActionsWrapper{
+    position: absolute;
+    left: 0;
+    top: 80px;
+    max-width:390px;
+    max-height: 200px;
+}
+
+.itemSize4 .itemActionsWrapper .itemButtonsWrapper{
+    position: absolute;
+    bottom: 0;
+    z-index: 101;
+    width:50px;
+    height:200px;
+}
+
+.itemSize4 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
+    position: relative;
+    margin-top: 5px;
+    z-index: 102;
+    width: 32px;
+    height: 32px;
+}
+
+.itemSize4 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
+    box-shadow: 0 1px 2px;
+    position: relative;
+    background-color: #004099;
+    border-radius: 4px;
+    width: inherit;
+    height: inherit;
+}
+
+.itemSize4 .itemActionsWrapper .itemImageWrapper {
+    cursor: hand;
+    width: inherit;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.itemSize4 .itemActionsWrapper .itemImageWrapper .itemImg{
+    width:inherit;
+    height:inherit;
+    position: relative;
+}
+
+.itemSize4 .itemDescriptionWrapper{
+    max-width: 480px;
+    height: inherit;
+    background-color: #eaeaea;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    padding: 5px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.itemSize4 .itemDescriptionWrapper p{
+
+}
+
+.itemSize4 .itemMeta {
+    width: 100%;
+    height:80px;
+    background-color: #fbfbfb;
+    position: relative;
+    bottom: 0;
+    padding: 5px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    overflow-wrap: break-word;
+}
+
+/*item size 4 end */
+
 
 /* Styling for the new item modal dialog */
 .new_item_modal_button {
