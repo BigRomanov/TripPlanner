@@ -20,7 +20,7 @@ define(
               '<button ng-href="" ng-click="deleteItem(item)" class="itemBtn">X</button>' +
             '</li>' +
             '<li class="ButtonWrapper">' +
-              '<button ng-href="" ng-click="click(item)" class="itemBtn">T</button>' +
+              '<button ng-href="" change-template class="itemBtn">T</button>' +
             '</li>' +
           '</ul>' +
         '</div>' +
@@ -34,9 +34,30 @@ define(
       restrict: 'E',
       template: template
     };
+
   });
 
-  tripApp.directive('notification', function($timeout){
+  tripApp.directive('changeTemplate', function($timeout) {
+    return {
+      link: function(scope, element, attrs) {
+        element.bind('click', function() {
+          $timeout(function() {
+            scope.item.sizeX = (scope.item.sizeX +1) % 5 ;
+            if (scope.item.sizeX == 0) {
+              scope.item.sizeX = 1;
+            }
+            //TODO: need to fix the add and remove classes. bug because of % operator in line 45
+            element.parent().parent().parent().parent().parent().parent().removeClass('itemsSize'+scope.item.sizeX);
+            element.parent().parent().parent().parent().parent().parent().addClass('itemsSize'+scope.item.sizeX+1);
+            console.log(scope.item.sizeX);
+          });
+        });
+      }
+    };
+  });
+
+
+    tripApp.directive('notification', function($timeout){
     return {
       restrict: 'E',
       replace: true,

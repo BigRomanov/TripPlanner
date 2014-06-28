@@ -227,7 +227,7 @@ define(
         2: '650',
         3: '870'
       };
-      $scope.counter = 0;
+      $scope.counter = 1;
       $scope.click = function() {
         $scope.counter = ($scope.counter + 1) % 4;
       };
@@ -235,12 +235,13 @@ define(
         console.log($scope.counter);
         console.log($scope.gridsterOpts.colWidth)
         console.log($scope.map[$scope.counter])
+        //$scope.gridsterOpts.colWidth = $scope.map[$scope.counter];
         $scope.gridsterOpts.colWidth = $scope.map[$scope.counter];
       })
+      // ----- end of temporary code --------------------------------------------
+
+
     };
-
-    // ----- end of temporary code --------------------------------------------
-
     tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);
 
   });
