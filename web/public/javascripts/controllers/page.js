@@ -176,11 +176,24 @@ define(
       }
 
       // ///////////////////////////////////////////////
+
+      function validateEmail(email) { 
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+
       var UserEmailCtrl = function ($scope, $modalInstance) {
         $scope.user = {'email' : "" } ;
 
         $scope.ok = function () {
-          $modalInstance.close($scope.user.email);
+          if (validateEmail($scope.user.email)) {
+            $modalInstance.close($scope.user.email);  
+          }
+          else
+          {
+            $scope.message = "Invalid email, please correct"
+          }
+          
         };
 
         $scope.cancel = function () {

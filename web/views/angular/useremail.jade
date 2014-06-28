@@ -1,6 +1,7 @@
 #newItemModal(style="width:400px;height:60px;background-color:white;position:fixed;top:10px;left:-230px;padding:10px;")
   .new_item_modal_url_input(style="width:300px;height:30px;padding:px;float:left;margin-right:20px")
     input(ng-model="user.email" style="width:300px;height:30px;padding:5px" placeholder="Enter email")
+    p.modal_message(ng-show="message") {{message}}
   .new_item_modal_buttons(style="float:right")
     a.new_item_modal_button(ng-click="ok()" style="display:block;float:left")
       img(src="/images/ok_button.png" style="height:30px;width:30px;")
