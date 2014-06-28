@@ -1,6 +1,16 @@
-h1 Admin ({{pages.length}} pages)
-button(ng-click="deleteAllPages()") Delete all pages
-a(href="#/pages/new" target="_blank") New page
+div.admin_header
+  div.admin_header_item
+    a(href="#/admin/users") Users
+  div.admin_header_item  
+    p Pages
+
+div.admin_sub_header
+  div.admin_header_item
+    a(ng-click="deleteAllPages()") Delete all pages
+  div.admin_header_item  
+    a(href="#/pages/new" target="_blank") New page
+
+h2 {{pages.length}} pages
 
 div#adminContent(style="padding:10px")
 ul

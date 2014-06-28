@@ -97,6 +97,38 @@ ul {
   background: url(http://subtlepatterns.com/patterns/scribble_light.png)
 }
 
+.admin_header {
+  height:30px;
+  position:fixed;
+  top:0;
+  left:0; 
+  width:100%;
+  border-bottom:1px solid #eee;
+  padding:5px;
+  padding-left:50px;
+  background-color: #fff
+}
+
+.admin_sub_header {
+  height:30px;
+  position:fixed;
+  top:30px;
+  left:0; 
+  width:100%;
+  border-bottom:1px solid #eee;
+  padding:5px;
+  padding-left:50px;
+  background-color: #fff
+}
+
+.admin_header_item {
+  height:20px;
+  margin-right:10px;
+  float:left;
+  border-right:1px solid #eee;
+  padding-right: 10px
+}
+
 .admin_content ul li {
   list-style-type: none;
   display:block;
