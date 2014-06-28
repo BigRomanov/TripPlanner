@@ -42,14 +42,9 @@ define(
       link: function(scope, element, attrs) {
         element.bind('click', function() {
           $timeout(function() {
-            scope.item.sizeX = (scope.item.sizeX +1) % 5 ;
-            if (scope.item.sizeX == 0) {
-              scope.item.sizeX = 1;
-            }
-            //TODO: need to fix the add and remove classes. bug because of % operator in line 45
-            element.parent().parent().parent().parent().parent().parent().removeClass('itemsSize'+scope.item.sizeX);
-            element.parent().parent().parent().parent().parent().parent().addClass('itemsSize'+scope.item.sizeX+1);
-            console.log(scope.item.sizeX);
+            scope.item.sizeX = ((scope.item.sizeX ) % 4 ) + 1;
+            element.parent().parent().parent().parent().parent().parent().removeClass('itemSize'+(((scope.item.sizeX+2)%4)+1));
+            element.parent().parent().parent().parent().parent().parent().addClass('itemSize'+scope.item.sizeX);
           });
         });
       }

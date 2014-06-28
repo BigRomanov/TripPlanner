@@ -208,7 +208,7 @@ ul {
     font-size: 11px;
 }
 
-/* item size 0 start */
+/* item size 1 start */
 
 .itemSize1 .itemActionsWrapper{
     width:100%;
@@ -267,10 +267,10 @@ ul {
     overflow-wrap: break-word;
 }
 
-/*item size 0 end */
+/*item size 1 end */
 
 
-/* item size 1 start */
+/* item size 2 start */
 
 .itemSize2 .itemActionsWrapper{
     position: absolute;
@@ -348,7 +348,7 @@ ul {
     overflow-wrap: break-word;
 }
 
-/*item size 1 end */
+/*item size 2 end */
 
 
 /* Styling for the new item modal dialog */
