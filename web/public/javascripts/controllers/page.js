@@ -16,6 +16,7 @@ define(
         colWidth: '220', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
         rowHeight: '290', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
         margins: [10, 10], // the pixel distance between each widget
+        padding: 0,
         isMobile: false, // stacks the grid items if true
         minColumns: 1, // the minimum columns the grid must have
         minRows: 2, // the minimum height of the grid, in rows

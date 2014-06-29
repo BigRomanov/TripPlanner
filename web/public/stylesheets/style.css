@@ -1,6 +1,5 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 400 12px/1.6 "Open Sans", sans-serif
 }
 
 a {
@@ -41,6 +40,7 @@ ul {
   left:0;
   border-right: 1px solid #ccc;
   padding-top:12px;
+  z-index: 101;
 }
 
 #newItem {
@@ -93,8 +93,12 @@ ul {
 }
 
 #contentPane {
-  padding-left:100px;
-  background: url(http://subtlepatterns.com/patterns/scribble_light.png)
+  height: 100%;
+  width:100%;
+  padding-left:20px;
+  margin-left: 80px;
+  position: relative;
+  background-image: url(http://subtlepatterns.com/patterns/scribble_light.png)
 }
 
 .admin_header {
@@ -205,7 +209,6 @@ ul {
     top: 0;
     left: 0;
     overflow: hidden;
-    font-size: 11px;
 }
 
 /* item size 1 start */
@@ -261,10 +264,9 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
+    padding: 10px 5px 5px;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 /*item size 1 end */
@@ -276,8 +278,8 @@ ul {
     position: absolute;
     left: 0;
     top: 80px;
-    max-width:260px;
-    max-height: 200px;
+    width:260px;
+    height: 200px;
 }
 
 .itemSize2 .itemActionsWrapper .itemButtonsWrapper{
@@ -322,18 +324,17 @@ ul {
 
 .itemSize2 .itemDescriptionWrapper{
     max-width: 170px;
-    height: inherit;
-    background-color: #eaeaea;
+    height: 200px;
+    background-color: #fbfbfb;
     position: absolute;
     right: 0;
     top: 80px;
-    padding: 5px;
-    margin-top: 5px;
+    padding: 0 5px 5px;
     text-align: left;
 }
 
 .itemSize2 .itemDescriptionWrapper p{
-
+    border-left: 2px #bbbbbb;
 }
 
 .itemSize2 .itemMeta {
@@ -342,10 +343,10 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 10px 5px 5px;
     font-size: 12px;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 /*item size 2 end */
@@ -356,8 +357,8 @@ ul {
     position: absolute;
     left: 0;
     top: 80px;
-    max-width:390px;
-    max-height: 200px;
+    width:390px;
+    height: 200px;
 }
 
 .itemSize3 .itemActionsWrapper .itemButtonsWrapper{
@@ -402,13 +403,12 @@ ul {
 
 .itemSize3 .itemDescriptionWrapper{
     max-width: 260px;
-    height: inherit;
-    background-color: #eaeaea;
+    height: 200px;
+    background-color: #fbfbfb;
     position: absolute;
     right: 0;
     top: 80px;
-    padding: 5px;
-    margin-top: 5px;
+    padding: 0 5px 5px;
     text-align: left;
 }
 
@@ -422,10 +422,10 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 10px 5px 5px;
     font-size: 12px;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 /*item size 3 end */
@@ -436,8 +436,8 @@ ul {
     position: absolute;
     left: 0;
     top: 80px;
-    max-width:390px;
-    max-height: 200px;
+    width:390px;
+    height: 200px;
 }
 
 .itemSize4 .itemActionsWrapper .itemButtonsWrapper{
@@ -482,13 +482,12 @@ ul {
 
 .itemSize4 .itemDescriptionWrapper{
     max-width: 480px;
-    height: inherit;
-    background-color: #eaeaea;
+    height: 200px;
+    background-color: #fbfbfb;
     position: absolute;
     right: 0;
     top: 80px;
-    padding: 5px;
-    margin-top: 5px;
+    padding: 0 5px 5px;
     text-align: left;
 }
 
@@ -502,10 +501,10 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 10px 5px 5px;
     font-size: 12px;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 /*item size 4 end */
