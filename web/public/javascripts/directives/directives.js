@@ -43,8 +43,7 @@ define(
         element.bind('click', function() {
           $timeout(function() {
             scope.item.sizeX = ((scope.item.sizeX ) % 4 ) + 1;
-            element.parent().parent().parent().parent().parent().parent().removeClass('itemSize'+(((scope.item.sizeX+2)%4)+1));
-            element.parent().parent().parent().parent().parent().parent().addClass('itemSize'+scope.item.sizeX);
+            scope.itemTemplateCounter= ((scope.itemTemplateCounter)%4)+1;
           });
         });
       }

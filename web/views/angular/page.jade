@@ -21,7 +21,7 @@
 
   #gridWrapper(gridster="gridsterOpts")
     div(gridster-item="item" ng-repeat="item in page.items", ng-mouseenter="showButtons=true",ng-mouseleave="showButtons=false", ng-init="showButtons=false")
-      div.item(ng-if="item.regular", ng-class="{0:'itemSize0', 1:'itemSize1', 2:'itemSize2', 3:'itemSize3'}[counter]")
+      div.item(ng-if="item.regular", ng-class="{1:'itemSize1', 2:'itemSize2', 3:'itemSize3', 4:'itemSize4'}[itemTemplateCounter]")
         trip-item
 
 
