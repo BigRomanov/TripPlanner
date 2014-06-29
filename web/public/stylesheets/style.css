@@ -221,17 +221,33 @@ ul {
 .itemSize1 .itemActionsWrapper .itemButtonsWrapper{
     position: absolute;
     bottom: 0;
-    z-index: 101;
+    z-index: 201;
     width:50px;
     height:200px;
 }
 
-.itemSize1 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
-    position: relative;
+.itemSize1 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    cursor: pointer;
     margin-top: 5px;
-    z-index: 102;
+    z-index: 203;
     width: 32px;
     height: 32px;
+    vertical-align: middle;
+}
+
+.itemSize1 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
+    position: absolute;
+    bottom: 40px;
+    left: 7px;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 203;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .itemSize1 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
@@ -241,6 +257,7 @@ ul {
     border-radius: 4px;
     width: inherit;
     height: inherit;
+    margin: auto;
 }
 
 .itemSize1 .itemActionsWrapper .itemImageWrapper {
@@ -266,7 +283,6 @@ ul {
     bottom: 0;
     padding: 10px 5px 5px;
     overflow-wrap: break-word;
-    text-align: left;
 }
 
 /*item size 1 end */
@@ -285,17 +301,33 @@ ul {
 .itemSize2 .itemActionsWrapper .itemButtonsWrapper{
     position: absolute;
     bottom: 0;
-    z-index: 101;
+    z-index: 201;
     width:50px;
     height:200px;
 }
 
-.itemSize2 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
-    position: relative;
+.itemSize2 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    cursor: pointer;
     margin-top: 5px;
-    z-index: 102;
+    z-index: 203;
     width: 32px;
     height: 32px;
+    vertical-align: middle;
+}
+
+.itemSize2 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
+    position: absolute;
+    bottom: 40px;
+    left: 7px;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 203;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .itemSize2 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
@@ -343,10 +375,9 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 10px 5px 5px;
-    font-size: 12px;
+    padding: 15px 5px 5px;
+    font-size: 13px;
     overflow-wrap: break-word;
-    text-align: left;
 }
 
 /*item size 2 end */
@@ -369,12 +400,28 @@ ul {
     height:200px;
 }
 
-.itemSize3 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
-    position: relative;
+.itemSize3 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    cursor: pointer;
     margin-top: 5px;
-    z-index: 102;
+    z-index: 203;
     width: 32px;
     height: 32px;
+    vertical-align: middle;
+}
+
+.itemSize3 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
+    position: absolute;
+    bottom: 40px;
+    left: 7px;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 203;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .itemSize3 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
@@ -422,10 +469,9 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 10px 5px 5px;
-    font-size: 12px;
+    padding: 15px 5px 5px;
+    font-size: 14px;
     overflow-wrap: break-word;
-    text-align: left;
 }
 
 /*item size 3 end */
@@ -448,12 +494,28 @@ ul {
     height:200px;
 }
 
-.itemSize4 .itemActionsWrapper .itemButtonsWrapper .ButtonWrapper {
-    position: relative;
+.itemSize4 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    cursor: pointer;
     margin-top: 5px;
-    z-index: 102;
+    z-index: 203;
     width: 32px;
     height: 32px;
+    vertical-align: middle;
+}
+
+.itemSize4 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
+    position: absolute;
+    bottom: 40px;
+    left: 7px;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 203;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .itemSize4 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
@@ -481,7 +543,7 @@ ul {
 }
 
 .itemSize4 .itemDescriptionWrapper{
-    max-width: 480px;
+    width: 480px;
     height: 200px;
     background-color: #fbfbfb;
     position: absolute;
@@ -501,10 +563,9 @@ ul {
     background-color: #fbfbfb;
     position: relative;
     bottom: 0;
-    padding: 10px 5px 5px;
-    font-size: 12px;
+    padding: 15px 5px 5px;
+    font-size: 16px;
     overflow-wrap: break-word;
-    text-align: left;
 }
 
 /*item size 4 end */
