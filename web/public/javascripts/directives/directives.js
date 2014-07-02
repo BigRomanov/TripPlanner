@@ -20,7 +20,7 @@ define(
                 '<img ng-src="../images/trash-2x.png" ng-click="deleteItem(item)" class="itemBtn"></button>' +
               '</li>' +
               '<li class="templateButtonWrapper">' +
-                '<img ng-src="../images/chevron-right-2x.png" change-template class="itemBtn"></button>' +
+                '<img ng-src="../images/chevron-right-2x.png" ng-click="changeWidth(item)" class="itemBtn"></button>' +
               '</li>' +
             '</ul>' +
           '</div>' +

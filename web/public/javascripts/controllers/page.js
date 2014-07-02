@@ -176,6 +176,16 @@ define(
         });
       }
 
+      $scope.changeWidth = function(item) {
+        item.sizeX = ((item.sizeX ) % 4 ) + 1;
+        item.pageId =  $scope.page._id;
+
+        pageModel.updateItem(item, function(err, item) {
+          if (err)
+            console.log(err);
+        });
+      }
+
       // ///////////////////////////////////////////////
 
       function validateEmail(email) { 
