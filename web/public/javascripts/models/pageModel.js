@@ -3,8 +3,9 @@ define(
   'jQuery',
   'underscore',
   'tripApp',
+  'async',
 ],
-function($, _, tripApp, $http) {
+function($, _, tripApp, async, $http) {
   "use strict";
 
 
@@ -101,6 +102,19 @@ function($, _, tripApp, $http) {
           console.log("ERROR: Could not update item", data);  
           callback(data);
         });
+      },
+      updateItems: function(items, callback) {
+        // We might want to optiomize that with a single call at some point
+        var self = this;
+        async.each(items, 
+          function(item, callback) {
+            self.updateItem(item, callback);
+          }, 
+          function(err) {
+            if (err) {
+              console.log("Some error occured when updating items", err);
+            }
+          });
       },
     }
 

@@ -63,11 +63,13 @@ define(
             }
             $scope.page = page;
 
+            $scope.page.items = _.sortBy($scope.page.items, function(item) {return item.order});
+
           });
         })
       }
 
-      function reflow() {
+      function reflow(callback) {
         var items = $scope.page.items;
         var nColumns = $scope.gridsterOpts.columns;
 
@@ -88,6 +90,8 @@ define(
           console.log("aPos",item.aPos, "Row: ", item.row, "Column:", item.col, "sizeX", item.sizeX, "Order:", item.order, "Id", item._id);
           console.log("nextRow", nextRow, "nextCol", nextCol);
 
+          item.newOrder = i; // update order index
+
           if (nextCol + item.sizeX > 4) { // overflow on current item
             nextCol = 0;
             nextRow = nextRow + 1;
@@ -99,6 +103,22 @@ define(
           nextCol = nextCol + item.sizeX;
           
         }
+
+        var updateItems = _.filter(sortedItems, function(item) {
+          if (item.order != item.newOrder) {
+            item.order = item.newOrder;
+            return true;
+          }
+          else {
+            return false;
+          }
+        });
+        console.log("Items to update:", updateItems);
+
+        pageModel.updateItems(updateItems, function(err, data) {
+          if (callback)
+            callback(err);
+        });
       }
 
       function getOrientation(item, callback) {
