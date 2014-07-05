@@ -36,7 +36,7 @@ define(
            //handle: '.my-class', // optional selector for resize handle
            start: function(event, uiWidget, $element) {}, // optional callback fired when drag is started,
            drag: function(event, uiWidget, $element) {}, // optional callback fired when item is moved,
-           stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished dragging
+           stop: function(event, uiWidget, $element) { reflow() } // optional callback fired when item is finished dragging
         }
       };
 
@@ -62,8 +62,43 @@ define(
               console.log("Some error occured when calculating orientation", err);
             }
             $scope.page = page;
+
           });
         })
+      }
+
+      function reflow() {
+        var items = $scope.page.items;
+        var nColumns = $scope.gridsterOpts.columns;
+
+        console.log("reflow.................... columns = ", nColumns);
+
+        _.each(items, function(item) { item.aPos = item.row*4 + item.col; });
+
+        var sortedItems = _.sortBy(items, function(item) {return item.aPos});
+
+        var nextRow = 0;
+        var nextCol = 0;
+
+        // asuming item.sizeX can not be more  then nColumns
+
+        for (var i = 0; i < sortedItems.length; i++)
+        {
+          var item = sortedItems[i];
+          console.log("aPos",item.aPos, "Row: ", item.row, "Column:", item.col, "sizeX", item.sizeX, "Order:", item.order, "Id", item._id);
+          console.log("nextRow", nextRow, "nextCol", nextCol);
+
+          if (nextCol + item.sizeX > 4) { // overflow on current item
+            nextCol = 0;
+            nextRow = nextRow + 1;
+          }
+
+          item.row = nextRow;
+          item.col = nextCol;
+
+          nextCol = nextCol + item.sizeX;
+          
+        }
       }
 
       function getOrientation(item, callback) {
@@ -150,26 +185,27 @@ define(
                 console.log(err)
               
               var index = calculateNewItemIndex();
-              console.log("Add new item at same location", index, item)
+              console.log("Add new item at location:", index, item);
               $scope.page.items[index] = item;  
+
+              reflow(); 
             });
           });
         }
       }
 
       $scope.deleteItem = function(item) {
-        console.log("Deleting item: ", item);
-        
-        item.pageId =  $scope.page._id,
+        var itemId = item._id;
+        console.log("Deleting item: ", itemId);
 
-        pageModel.deleteItem(item, function(err, item) {
+        pageModel.deleteItem(item.pageId, itemId, function(err, item) {
           if (err)
             console.log(err);
 
           for(var i = 0; i < $scope.page.items.length; i++) {
-            console.log($scope.page.items[i]);
-            if (item.itemId == $scope.page.items[i]._id) {
+            if (itemId == $scope.page.items[i]._id) {
               $scope.page.items.splice(i,1);
+              reflow();
               return;
             }
           }
@@ -183,6 +219,7 @@ define(
         pageModel.updateItem(item, function(err, item) {
           if (err)
             console.log(err);
+          reflow();
         });
       }
 
@@ -229,9 +266,6 @@ define(
           // think about something to do here
         });
       }
-
-      $scope.itemTemplateCounter = 1;
-
     };
     tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);
 

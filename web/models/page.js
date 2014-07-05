@@ -5,6 +5,7 @@ var Items = mongoose.Schema({
   url: String,
   orientation: Number,
   sizeX: Number,
+  order: Number,
   images: [{url: String}],
   tags:[{name:String, slug: String}]
 });
@@ -38,6 +39,7 @@ Page.method({
         this.items[i].images = item.images;
         this.items[i].tags = item.tags;
         this.items[i].orientation = item.orientation;
+        this.items[i].order = item.order;
         this.items[i].sizeX = item.sizeX;
       }
     };

@@ -77,7 +77,6 @@ function($, _, tripApp, $http) {
         });
       },
       deleteItem: function(pageId, itemId, callback) {
-        console.log('Create new item', item);
         $http({
           method: "DELETE",
           url: "http://localhost:3000/item/"+itemId+"?pageId="+pageId
