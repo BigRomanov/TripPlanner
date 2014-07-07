@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var Items = mongoose.Schema({
-  title: String,
+  title: {type: String, default: "Set page title" },
   url: String,
   orientation: Number,
   sizeX: Number,

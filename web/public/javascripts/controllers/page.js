@@ -51,6 +51,10 @@ define(
       }
       else {
         pageModel.loadPage($routeParams.id, function(err, page) {
+          console.log(page.title);
+          if (!page.title) {
+            page.title = "Set page title";
+          }
           async.each(page.items, 
           function(item, callback) {
             item.pageId = page._id;
@@ -268,6 +272,15 @@ define(
           $modalInstance.dismiss('cancel');
         };
       };
+
+      $scope.updatePageTitle = function() {
+        console.log("New page title: ", $scope.page.title);
+        pageModel.updatePage($scope.page, function(err, page) {
+          if (err) {
+            console.log("Error while updating page", err);
+          }          
+        });
+      }
 
       $scope.savePage = function() {
         // Request user email

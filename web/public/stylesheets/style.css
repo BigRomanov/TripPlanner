@@ -39,7 +39,7 @@ ul {
   top:0;
   left:0;
   border-right: 1px solid #ccc;
-  padding-top:12px;
+  padding-top:62px;
   z-index: 101;
 }
 
@@ -581,4 +581,70 @@ ul {
 .modal_message {
   font-size:10px;
   color:red;
+}
+
+/* Inline editor styling */
+.inlineEditor span {
+  cursor: pointer;
+}
+
+.inlineEditor a {
+  cursor: pointer;
+}
+
+.inlineEditor input {
+  display: none;
+  height: 20px;
+  line-height: 20px;
+  border:none;
+}
+
+.inlineEditor.active span {
+  display: none;
+}
+
+.inlineEditor.active a {
+  display: none;
+}
+
+.inlineEditor.active span {
+  display: none;
+}
+
+.inlineEditor.active input {
+  display: inline-block;
+}
+
+/* Title editor styling */
+#titleEditor span {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+#titleEditor a {
+  cursor: pointer;
+}
+
+#titleEditor input {
+  font-size: 24px;
+  display: none;
+  height: 40px;
+  line-height: 40px;
+  border:none;
+}
+
+#titleEditor.active span {
+  display: none;
+}
+
+#titleEditor.active a {
+  display: none;
+}
+
+#titleEditor.active span {
+  display: none;
+}
+
+#titleEditor.active input {
+  display: inline-block;
 }

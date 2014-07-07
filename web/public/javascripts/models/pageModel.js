@@ -47,6 +47,21 @@ function($, _, tripApp, async, $http) {
           callback(data);
         });
       },
+      updatePage: function(page, callback) {
+        $http({
+          method: "PUT",
+          url: "http://localhost:3000/page/" + page._id,
+          data: {
+            'title':page.title,
+          }
+        }).success(function(data, status, headers, config) {
+          console.log("SUCCESS: Saved page", data);
+          callback(null, data);
+        }).error(function(data, status, headers, config) {
+          console.log("ERROR: Could not save page", data);  
+          callback(data);
+        });
+      },
       savePage: function(id, email, callback) {
         $http({
           method: "POST",
