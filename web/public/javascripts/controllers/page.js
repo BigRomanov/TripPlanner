@@ -173,6 +173,7 @@ define(
           controller: NewItemCtrl,
           resolve: {
             url: function () {
+              $scope.newItem.url = ""
               return $scope.newItem.url;
             }
           }
