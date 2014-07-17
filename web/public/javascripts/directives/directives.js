@@ -8,6 +8,30 @@ define(
 
       var template  =
 
+        '<div class="itemActionsWrapper">' +
+          '<div class="itemImageWrapper">' +
+            '<img ng-src="{{item.images[0].url}}" class="itemImg"/>' +
+            '<ul ng-show="showButtons" class="itemButtonsWrapper">' +
+              '<li class="deleteButtonWrapper">' +
+                '<img ng-src="../images/trash-2x.png" ng-click="deleteItem(item)" class="itemBtn"></button>' +
+              '</li>' +
+              '<li class="templateButtonWrapper">' +
+                '<img ng-src="../images/chevron-right-2x.png" ng-click="changeWidth(item)" class="itemBtn"></button>' +
+              '</li>' +
+            '</ul>' +
+          '</div>' +
+        '</div>' +
+        '<div class="itemTitleBackground"> </div>' +
+        '<div class="itemTitleWrapper">' +
+          '<p class="itemTitle">{{item.title}}</p>' +
+          //'<a ng-href="{{item.url}}">{{item.url}}</p>' +
+        '</div>' +
+        '<div class="itemDescriptionBackground"> </div>' +
+        '<div class="itemDescriptionWrapper">' +
+          '<p class="itemDescription">hi there. this is some description for test. are you satisfied with what you see here? hi there. this is some description for test. are you satisfied with what you see here? hi there. this is some description for test. are you satisfied with what you see here? hi there. this is some description for test. are you satisfied with what you see here? hi there. this is some description for test. are you satisfied with what you see here? hi there. this is some description for test. are you satisfied with what you see here? this is some description for test. are you satisfied with what you see here?</p>'
+        '</div>'
+
+        /*
         '<div class="itemMeta">' +
           '<p>{{item.title}}</p>' +
           //'<a ng-href="{{item.url}}">{{item.url}}</p>' +
@@ -28,7 +52,7 @@ define(
         '<div class="itemDescriptionWrapper">' +
           '<p>hi there. this is some description for test. are you satisfied with what you see here?</p>'
         '</div>'
-
+        */
 
       return {
         restrict: 'E',

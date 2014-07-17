@@ -211,14 +211,9 @@ ul {
     overflow: hidden;
 }
 
-/* item size 1 start */
+/* shared css properties for all item sizes start*/
 
-.itemSize1 .itemActionsWrapper{
-    width:100%;
-    height: 200px;
-}
-
-.itemSize1 .itemActionsWrapper .itemButtonsWrapper{
+.itemActionsWrapper .itemButtonsWrapper{
     position: absolute;
     bottom: 0;
     z-index: 201;
@@ -226,7 +221,7 @@ ul {
     height:200px;
 }
 
-.itemSize1 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
+.itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
     position: absolute;
     bottom: 7px;
     left: 7px;
@@ -238,7 +233,7 @@ ul {
     vertical-align: middle;
 }
 
-.itemSize1 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
+.itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
     position: absolute;
     bottom: 40px;
     left: 7px;
@@ -250,7 +245,7 @@ ul {
     vertical-align: middle;
 }
 
-.itemSize1 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
+.itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
     box-shadow: 0 1px 2px;
     position: relative;
     background-color: #004099;
@@ -260,316 +255,328 @@ ul {
     margin: auto;
 }
 
-.itemSize1 .itemActionsWrapper .itemImageWrapper {
-    cursor: hand;
-    width: inherit;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+.itemUrl {
+    font-size: 9px;
+    text-align: left;
 }
 
-.itemSize1 .itemActionsWrapper .itemImageWrapper .itemImg{
-    width:inherit;
-    height:inherit;
-    position: relative;
-}
+/* shared css properties for all item sizes end*/
 
-.itemSize1 .itemMeta {
+/* item size1 start*/
+
+.itemSize1 .itemActionsWrapper {
+    position: relative;
     width: 100%;
-    height:80px;
-    background-color: #fbfbfb;
+    height: 100%;
+}
+
+.itemSize1 .itemActionsWrapper .itemImageWrapper {
     position: relative;
-    bottom: 0;
-    padding: 10px 5px 5px;
-    overflow-wrap: break-word;
-}
-
-/*item size 1 end */
-
-
-/* item size 2 start */
-
-.itemSize2 .itemActionsWrapper{
-    position: absolute;
-    left: 0;
-    top: 80px;
-    width:260px;
-    height: 200px;
-}
-
-.itemSize2 .itemActionsWrapper .itemButtonsWrapper{
-    position: absolute;
-    bottom: 0;
-    z-index: 201;
-    width:50px;
-    height:200px;
-}
-
-.itemSize2 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
-    position: absolute;
-    bottom: 7px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize2 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
-    position: absolute;
-    bottom: 40px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize2 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
-    box-shadow: 0 1px 2px;
-    position: relative;
-    background-color: #004099;
-    border-radius: 4px;
     width: inherit;
     height: inherit;
+    overflow: hidden;
+    z-index: 101;
+}
+
+.itemSize1 .itemActionsWrapper .itemImageWrapper .itemImg {
+    position: relative;
+    width: inherit;
+    height: inherit;
+}
+
+.itemSize1 .itemTitleBackground{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:70px;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 102;
+}
+
+.itemSize1 .itemTitleWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:70px;
+    padding: 10px 5px 5px;
+    overflow-wrap: break-word;
+    z-index: 103;
+}
+
+.itemSize1 .itemTitle {
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    z-index: 104;
+    text-shadow: 2px 2px #000;
+}
+
+/* no description on item size1*/
+
+/* item size 1 end */
+
+/* item size2 start*/
+
+.itemSize2 .itemActionsWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .itemSize2 .itemActionsWrapper .itemImageWrapper {
-    cursor: hand;
-    width: inherit;
-    height: 200px;
     position: relative;
+    width: inherit;
+    height: inherit;
     overflow: hidden;
-    z-index: 1;
+    z-index: 101;
 }
 
-.itemSize2 .itemActionsWrapper .itemImageWrapper .itemImg{
-    width:inherit;
-    height:inherit;
+.itemSize2 .itemActionsWrapper .itemImageWrapper .itemImg {
     position: relative;
+    width: inherit;
+    height: inherit;
+}
+
+.itemSize2 .itemTitleBackground{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:70px;
+    background-color: #000;
+    opacity: 0.5;    
+    z-index: 102;  
+}
+
+.itemSize2 .itemTitleWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:70px;
+    padding: 10px 5px 5px;
+    overflow-wrap: break-word;
+    z-index: 103;
+}
+
+.itemSize2 .itemTitle {
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    z-index: 104;
+    text-shadow: 2px 2px #000;
+}
+
+/* No description for item size2*/
+
+/*
+.itemSize2 .itemDescriptionBackground {
+    position: absolute;
+    height: 200px;
+    width: 160px;
+    right: 5px;
+    bottom: 5px;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 102;
 }
 
 .itemSize2 .itemDescriptionWrapper{
-    max-width: 170px;
-    height: 200px;
-    background-color: #fbfbfb;
     position: absolute;
-    right: 0;
-    top: 80px;
-    padding: 0 5px 5px;
-    text-align: left;
+    height: 200px;
+    width: 160px;
+    right: 5px;
+    bottom: 5px;
+    padding: 5px;
+    z-index: 103;
 }
 
-.itemSize2 .itemDescriptionWrapper p{
-    border-left: 2px #bbbbbb;
-}
-
-.itemSize2 .itemMeta {
-    width: 100%;
-    height:80px;
-    background-color: #fbfbfb;
-    position: relative;
-    bottom: 0;
-    padding: 15px 5px 5px;
+.itemSize2 .itemDescription {
     font-size: 13px;
-    overflow-wrap: break-word;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    z-index: 104;
 }
+*/
 
-/*item size 2 end */
+/* item size2 end*/
 
-/* item size 3 start */
+/* item size3 start*/
 
-.itemSize3 .itemActionsWrapper{
-    position: absolute;
-    left: 0;
-    top: 80px;
-    width:390px;
-    height: 200px;
-}
-
-.itemSize3 .itemActionsWrapper .itemButtonsWrapper{
-    position: absolute;
-    bottom: 0;
-    z-index: 101;
-    width:50px;
-    height:200px;
-}
-
-.itemSize3 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
-    position: absolute;
-    bottom: 7px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize3 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
-    position: absolute;
-    bottom: 40px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize3 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
-    box-shadow: 0 1px 2px;
+.itemSize3 .itemActionsWrapper {
     position: relative;
-    background-color: #004099;
-    border-radius: 4px;
-    width: inherit;
-    height: inherit;
+    width: 435px;
+    height: 100%;
 }
 
 .itemSize3 .itemActionsWrapper .itemImageWrapper {
-    cursor: hand;
+    position: relative;
     width: inherit;
-    height: 200px;
-    position: relative;
+    height: inherit;
     overflow: hidden;
-    z-index: 1;
-}
-
-.itemSize3 .itemActionsWrapper .itemImageWrapper .itemImg{
-    width:inherit;
-    height:inherit;
-    position: relative;
-}
-
-.itemSize3 .itemDescriptionWrapper{
-    max-width: 260px;
-    height: 200px;
-    background-color: #fbfbfb;
-    position: absolute;
-    right: 0;
-    top: 80px;
-    padding: 0 5px 5px;
-    text-align: left;
-}
-
-.itemSize3 .itemDescriptionWrapper p{
-
-}
-
-.itemSize3 .itemMeta {
-    width: 100%;
-    height:80px;
-    background-color: #fbfbfb;
-    position: relative;
-    bottom: 0;
-    padding: 15px 5px 5px;
-    font-size: 14px;
-    overflow-wrap: break-word;
-}
-
-/*item size 3 end */
-
-/* item size 4 start */
-
-.itemSize4 .itemActionsWrapper{
-    position: absolute;
-    left: 0;
-    top: 80px;
-    width:390px;
-    height: 200px;
-}
-
-.itemSize4 .itemActionsWrapper .itemButtonsWrapper{
-    position: absolute;
-    bottom: 0;
     z-index: 101;
-    width:50px;
-    height:200px;
 }
 
-.itemSize4 .itemActionsWrapper .itemButtonsWrapper .deleteButtonWrapper {
-    position: absolute;
-    bottom: 7px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize4 .itemActionsWrapper .itemButtonsWrapper .templateButtonWrapper {
-    position: absolute;
-    bottom: 40px;
-    left: 7px;
-    cursor: pointer;
-    margin-top: 5px;
-    z-index: 203;
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
-
-.itemSize4 .itemActionsWrapper .itemButtonsWrapper .buttonWrapper .itemBtn{
-    box-shadow: 0 1px 2px;
+.itemSize3 .itemActionsWrapper .itemImageWrapper .itemImg {
     position: relative;
-    background-color: #004099;
-    border-radius: 4px;
     width: inherit;
     height: inherit;
 }
 
-.itemSize4 .itemActionsWrapper .itemImageWrapper {
-    cursor: hand;
-    width: inherit;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+.itemSize3 .itemTitleBackground{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 215px;
+    height:70px;
+    background-color: #000;
+    opacity: 0.8;    
+    z-index: 102;  
 }
 
-.itemSize4 .itemActionsWrapper .itemImageWrapper .itemImg{
-    width:inherit;
-    height:inherit;
+.itemSize3 .itemTitleWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 215px;
+    height:70px;
+    padding: 10px 5px 5px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    z-index: 103;
+}
+
+.itemSize3 .itemTitle {
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    z-index: 104;
+    text-shadow: 2px 2px #000;
+}
+
+.itemSize3 .itemDescriptionBackground {
+    position: absolute;
+    height: 210px;
+    width: 215px;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 102;
+}
+
+.itemSize3 .itemDescriptionWrapper{
+    position: absolute;
+    height: 210px;
+    width: 215px;
+    right: 0;
+    bottom: 0;
+    padding: 7px;
+    z-index: 103;
+    overflow: hidden;
+}
+
+.itemSize3 .itemDescription {
+    font-size: 15px;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    z-index: 104;
+}
+
+/* item size3 end*/
+
+/* item size4 start*/
+
+.itemSize4 .itemActionsWrapper {
     position: relative;
+    width: 435px;
+    height: 100%;
+}
+
+.itemSize4 .itemActionsWrapper .itemImageWrapper {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    z-index: 101;
+}
+
+.itemSize4 .itemActionsWrapper .itemImageWrapper .itemImg {
+    position: relative;
+    width: inherit;
+    height: inherit;
+}
+
+.itemSize4 .itemTitleBackground{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 435px;
+    height:70px;
+    background-color: #000;
+    opacity: 0.8;    
+    z-index: 102;  
+}
+
+.itemSize4 .itemTitleWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 435px;
+    height:70px;
+    padding: 10px 5px 5px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    z-index: 103;
+}
+
+.itemSize4 .itemTitle {
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    z-index: 104;
+    text-shadow: 2px 2px #000;
+}
+
+.itemSize4 .itemDescriptionBackground {
+    position: absolute;
+    height: 210px;
+    width: 435px;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 102;
 }
 
 .itemSize4 .itemDescriptionWrapper{
-    width: 480px;
-    height: 200px;
-    background-color: #fbfbfb;
     position: absolute;
+    height: 210px;
+    width: 435px;
     right: 0;
-    top: 80px;
-    padding: 0 5px 5px;
-    text-align: left;
-}
-
-.itemSize4 .itemDescriptionWrapper p{
-
-}
-
-.itemSize4 .itemMeta {
-    width: 100%;
-    height:80px;
-    background-color: #fbfbfb;
-    position: relative;
     bottom: 0;
-    padding: 15px 5px 5px;
-    font-size: 16px;
-    overflow-wrap: break-word;
+    padding: 7px;
+    z-index: 103;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    overflow: hidden;
 }
 
-/*item size 4 end */
+.itemSize4 .itemDescription {
+    font-size: 15px;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    z-index: 104;
+}
 
+/* item size4 end*/
 
 /* Styling for the new item modal dialog */
 .new_item_modal_button {
