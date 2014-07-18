@@ -40,8 +40,13 @@ define(
         }
       };
 
+      //truncate opts
+      $scope.numChars = 20;
+      $scope.numWords = 5;
+      $scope.breakOnWord = false;
+
       $scope.newItem   = { url  : "" };
-      
+
       if ($routeParams.id == 'new')
       {
         pageModel.createPage(function(err, page) {

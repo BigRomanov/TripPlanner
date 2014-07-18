@@ -21,7 +21,8 @@ require.config({
     'bootstrap-tagsinput': 'lib/bootstrap-tagsinput.min',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
     'ng-tags-input' : 'lib/ng-tags-input',
-    sortable : 'lib/sortable'
+    sortable : 'lib/sortable',
+    angularTruncate: 'lib/truncate'
   },
   shim: {
     'jQuery': {
@@ -76,6 +77,10 @@ require.config({
       deps: ['jQueryui', 'bootstrap', 'angular'],
       exports: 'gridster'
     },
+    'angularTruncate': {
+      deps: ['angular'],
+      exports: 'truncate'
+    }
   }
 });
 
@@ -85,7 +90,8 @@ require([
   'angularRoute', 
   'angularResource', 
   'angularAnimate', 
-  'angularGridster', 
+  'angularGridster',
+  'angularTruncate',
   'bootstrap', 
   'ui-bootstrap', 
   'bootstrap-tagsinput',

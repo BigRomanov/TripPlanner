@@ -23,7 +23,7 @@ define(
         '</div>' +
         '<div class="itemTitleBackground"> </div>' +
         '<div class="itemTitleWrapper">' +
-          '<p class="itemTitle">{{item.title}}</p>' +
+          '<p class="itemTitle">{{item.title |characters:50:false}}</p>' +
           //'<a ng-href="{{item.url}}">{{item.url}}</p>' +
         '</div>' +
         '<div class="itemDescriptionBackground"> </div>' +

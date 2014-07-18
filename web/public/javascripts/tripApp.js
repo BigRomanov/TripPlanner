@@ -3,12 +3,13 @@ define(
     'angular',
     'angularAnimate',
     'angularGridster',
-    'ui-bootstrap'
+    'ui-bootstrap',
+    'angularTruncate'
   ],
   function(angular) {
     'use strict';
 
-    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable', 'ngAnimate', 'gridster']);
+    var app = angular.module('tripApp', ['ui.bootstrap', 'bootstrap-tagsinput', 'ngRoute', 'ngTagsInput','ngResource', 'ui.sortable', 'ngAnimate', 'gridster', 'truncate']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', '$provide',
       function($routeProvider, $locationProvider, $httpProvider, $provide) {

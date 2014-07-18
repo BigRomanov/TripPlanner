@@ -93,12 +93,14 @@ ul {
 }
 
 #contentPane {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
   width:100%;
-  padding-left:20px;
   margin-left: 80px;
   position: relative;
-  background-image: url(http://subtlepatterns.com/patterns/scribble_light.png)
+  background: url(../images/bg2_page.jpg) fixed;
 }
 
 .admin_header {
@@ -196,10 +198,13 @@ ul {
 }
 
 #gridWrapper {
+    position: relative;
     width: 90%;
     max-width: 1100px;
     min-width: 800px;
-    margin: 50px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
 }
 
 .itemSize1, .itemSize2, .itemSize2, .itemSize3{
@@ -449,7 +454,7 @@ ul {
 }
 
 .itemSize3 .itemTitle {
-    font-size: 17px;
+    font-size: 15px;
     color: #fff;
     font-weight: bold;
     text-align: center;
@@ -624,32 +629,37 @@ ul {
 
 /* Title editor styling */
 #titleEditor span {
+
   cursor: pointer;
   font-size: 24px;
+  margin: 50px auto;
 }
 
 #titleEditor a {
   cursor: pointer;
+  margin: 50px auto;
 }
 
 #titleEditor input {
+  position: relative;
+  max-width: 1100px;
+  margin: 50px auto;
   font-size: 24px;
   display: none;
   height: 40px;
   line-height: 40px;
   border:none;
+
 }
 
 #titleEditor.active span {
   display: none;
+  margin: 50px auto;
 }
 
 #titleEditor.active a {
   display: none;
-}
-
-#titleEditor.active span {
-  display: none;
+  margin: 50px auto;
 }
 
 #titleEditor.active input {
