@@ -261,8 +261,12 @@ ul {
 }
 
 .itemUrl {
-    font-size: 9px;
-    text-align: left;
+    position: absolute;
+    bottom: 7px;
+    right: 7px;
+    font-size: 10px;
+    text-align: right;
+    float:right;
 }
 
 /* shared css properties for all item sizes end*/
@@ -304,7 +308,7 @@ ul {
     top: 0;
     width: 100%;
     height:70px;
-    padding: 10px 5px 5px;
+    padding: 7px 5px;
     overflow-wrap: break-word;
     z-index: 103;
 }
@@ -316,6 +320,7 @@ ul {
     text-align: center;
     z-index: 104;
     text-shadow: 2px 2px #000;
+    margin: 0;
 }
 
 /* no description on item size1*/
@@ -359,7 +364,7 @@ ul {
     top: 0;
     width: 100%;
     height:70px;
-    padding: 10px 5px 5px;
+    padding: 7px 5px;
     overflow-wrap: break-word;
     z-index: 103;
 }
@@ -447,7 +452,7 @@ ul {
     right: 0;
     width: 215px;
     height:70px;
-    padding: 10px 5px 5px;
+    padding: 7px 5px;
     overflow-wrap: break-word;
     overflow: hidden;
     z-index: 103;
@@ -533,7 +538,7 @@ ul {
     right: 0;
     width: 435px;
     height:70px;
-    padding: 10px 5px 5px;
+    padding: 7px 5px;
     overflow-wrap: break-word;
     overflow: hidden;
     z-index: 103;

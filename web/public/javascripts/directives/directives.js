@@ -11,6 +11,7 @@ define(
         '<div class="itemActionsWrapper">' +
           '<div class="itemImageWrapper">' +
             '<img ng-src="{{item.images[0].url}}" class="itemImg"/>' +
+            '<a class ="itemUrl" target="_blank" ng-href="{{item.url}}"> go to site</a>' +
             '<ul ng-show="showButtons" class="itemButtonsWrapper">' +
               '<li class="deleteButtonWrapper">' +
                 '<img ng-src="../images/trash-2x.png" ng-click="deleteItem(item)" class="itemBtn"></button>' +
@@ -23,8 +24,7 @@ define(
         '</div>' +
         '<div class="itemTitleBackground"> </div>' +
         '<div class="itemTitleWrapper">' +
-          '<p class="itemTitle">{{item.title |characters:50:false}}</p>' +
-          //'<a ng-href="{{item.url}}">{{item.url}}</p>' +
+          '<p class="itemTitle">{{item.title |characters:55:false}}</p>' +
         '</div>' +
         '<div class="itemDescriptionBackground"> </div>' +
         '<div class="itemDescriptionWrapper">' +
