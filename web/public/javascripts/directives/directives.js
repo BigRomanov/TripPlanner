@@ -33,6 +33,9 @@ define(
 
         /*
         '<div class="itemMeta">' +
+          '<div ng-show="item.loading" class="itemLoading">' +
+            '<img src="/images/spinner.gif" width=40 height=40 style="margin-top:10px"/>' +
+          '</div>' +
           '<p>{{item.title}}</p>' +
           //'<a ng-href="{{item.url}}">{{item.url}}</p>' +
         '</div>' +

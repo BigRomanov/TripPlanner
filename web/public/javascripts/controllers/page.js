@@ -8,7 +8,7 @@ define(
   function($, tripApp, async) {
     'use strict';
 
-    var PageController = function($scope, $route, $routeParams, $http, $modal, pageModel) {
+    var PageController = function($scope, $route, $routeParams, $http, $modal, $location,pageModel) {
 
       $scope.gridsterOpts = {
         columns: 4, // the width of the grid, in columns
@@ -51,12 +51,13 @@ define(
       {
         pageModel.createPage(function(err, page) {
           $scope.page = page;
-          $scope.newpage = true;
+          $location.url('pages/'+page._id);
+          
+          //$scope.newpage = true;
         });
       }
       else {
         pageModel.loadPage($routeParams.id, function(err, page) {
-          console.log(page.title);
           if (!page.title) {
             page.title = "Set page title";
           }
@@ -205,7 +206,16 @@ define(
       $scope.addItem = function() {
         console.log("Creating new item:", $scope.newItem)
         if ($scope.newItem.url) {
-          var newItem = {pageId:$scope.page._id, url:$scope.newItem.url};
+          var newItem = {
+            pageId:$scope.page._id, 
+            url:$scope.newItem.url, 
+            loading:true,
+            regular:true
+          };
+
+          var index = calculateNewItemIndex();
+          $scope.page.items[index] = newItem;  
+
           pageModel.createItem(newItem, function(err, item) {
             // TODO: Consider refactoring to preloadItem
             item.pageId = $scope.page._id;
@@ -214,9 +224,7 @@ define(
               if (err)
                 console.log(err)
               
-              var index = calculateNewItemIndex();
-              console.log("Add new item at location:", index, item);
-              $scope.page.items[index] = item;  
+              $scope.page.items[index] = item;                
 
               reflow(); 
             });
@@ -306,6 +314,6 @@ define(
         });
       }
     };
-    tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', 'pageModel', PageController]);
+    tripApp.controller('pageController', ['$scope', '$route', '$routeParams', '$http', '$modal', '$location', 'pageModel', PageController]);
 
   });
