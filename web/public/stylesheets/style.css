@@ -127,6 +127,18 @@ ul {
   background-color: #fff
 }
 
+.admin_message_header {
+  height:30px;
+  position:fixed;
+  top:60px;
+  left:0; 
+  width:100%;
+  border-bottom:1px solid #eee;
+  padding:5px;
+  padding-left:50px;
+  background-color: #fff
+}
+
 .admin_header_item {
   height:20px;
   margin-right:10px;

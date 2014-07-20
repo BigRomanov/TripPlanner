@@ -1,14 +1,22 @@
+
 div.admin_header
   div.admin_header_item
     a(href="#/admin/users") Users
   div.admin_header_item  
     p Pages
+  
 
 div.admin_sub_header
   div.admin_header_item
     a(ng-click="deleteAllPages()") Delete all pages
   div.admin_header_item  
     a(href="#/pages/new" target="_blank") New page
+
+div.admin_message_header
+  #adminProgress(style="display:none")  
+    img(src='/images/spinner.gif' width=20 height=20 style="float:right")
+    p Operation in progress
+
 
 h2 {{pages.length}} pages
 
