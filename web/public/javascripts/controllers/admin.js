@@ -23,7 +23,11 @@ define(
       };
 
       $scope.deleteAllPages = function() {
+        console.log("Deleting all pages");
+        angular.element("#adminProgress").show();
         adminService.deleteAllPages(function(err, data) {
+          angular.element("#adminProgress").hide();
+          console.log("Deleted all pages");
           if (err) {
             alert("Error: unable to delete all pages");
           }
