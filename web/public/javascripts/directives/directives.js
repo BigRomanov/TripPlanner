@@ -24,6 +24,9 @@ define(
         '</div>' +
         '<div class="itemTitleBackground"> </div>' +
         '<div class="itemTitleWrapper">' +
+          '<div ng-show="item.loading" class="itemLoading">' +
+            '<img src="/images/spinner.gif" width=40 height=40 style="margin-top:10px"/>' +
+          '</div>' +
           '<p class="itemTitle">{{item.title |characters:55:false}}</p>' +
         '</div>' +
         '<div class="itemDescriptionBackground"> </div>' +
