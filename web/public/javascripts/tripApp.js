@@ -101,6 +101,10 @@ define(
           controller: 'loginController'
         });
 
+        $routeProvider.when('/admin', {
+          redirectTo: '/admin/pages'
+        });
+
         $routeProvider.when('/admin/pages', {
           templateUrl: 'angular/admin_pages',
           controller: 'adminController'
