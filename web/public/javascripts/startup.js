@@ -104,7 +104,6 @@ require([
   'controllers/home',
   'controllers/page',
   'controllers/admin',
-  'controllers/test',
   'controllers/login',], function($, angular) {
     angular.bootstrap(document, ['tripApp']);
   });

@@ -115,12 +115,6 @@ define(
           controller: 'adminController'
         });
 
-        $routeProvider.when('/test/:id', {
-          templateUrl: 'angular/test',
-          controller: 'testController'
-        });
-
-
         $routeProvider.otherwise({
           redirectTo: '/home'
         });
