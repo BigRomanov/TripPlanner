@@ -80,6 +80,9 @@ define(
       }
 
       function reflow(callback) {
+        if (callback)
+          callback(null);
+        return;
         var items = $scope.page.items;
         var nColumns = $scope.gridsterOpts.columns;
 
